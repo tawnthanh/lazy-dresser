@@ -43,7 +43,7 @@ Let's take a deeper dive into the different aspects of the application, which wi
 
 2. Allow the user to create "closets" that will pertain all the outfit variations they could want. This closet could be work, party, casual, athletic, etc.
 
-3. Advance the randomization algorithm so it does more than just compare the colors and ensure all the components are there. I would like to have the user be able to filter the randomization based on color, clothing item, style, and occasion.
+3. Advance the randomization algorithm so the randomization is not only based on color and clothing item, but can be based on style and occasion the person is looking for.
 
 4. A big stretch that I would love is to integrate outside retail sites into the app to allow users to see how the item they're interested in integrates to their wardrobe.
 
