@@ -11,9 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     occasionId: DataTypes.INTEGER
   }, {});
   ClothingItem.associate = function(models) {
-    // associations can be defined here
     const columnMapping = {
-      through: 'OutfitList', // This is the model name referencing the join table.
+      through: 'OutfitList',
       otherKey: 'outfitId',
       foreignKey: 'clothingItemId'
     }

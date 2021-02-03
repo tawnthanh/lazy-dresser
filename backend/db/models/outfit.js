@@ -7,14 +7,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Outfit.associate = function(models) {
     // associations can be defined here
-    Outfit.hasMany(models.User, { foreignKey: "userId" })
+    Outfit.belongsTo(models.User, { foreignKey: "userId" })
 
     Outfit.belongsToMany(models.ClothingItem, {
       through: "OutfitList",
       otherKey: "clothingItemId",
       foreignKey: "outfitId"
     });
-    Outfit.belongsToMany(models.ClothingItem, {
+    Outfit.belongsToMany(models.Closet, {
       through: "ClosetOutfits",
       otherKey: "closetId",
       foreignKey: "outfitId"
