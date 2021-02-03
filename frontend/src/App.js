@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
+import ProfilePage from "./components/ProfilePage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -28,7 +29,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path="/" exact={true}>
-            <SignupFormPage />
+            <ProfilePage />
           </Route>
         </Switch>
       )}

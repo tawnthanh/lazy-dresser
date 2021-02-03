@@ -1,3 +1,77 @@
 .profile-dropdown {
   position: absolute;
 }
+
+.side-title{
+  position: absolute;
+  width: 80px;
+  color: #1a1d4e;
+  margin-left: 8px;
+  /* border: 1px solid yellow; */
+}
+
+.sidebar{
+  position: static;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 97vh;
+  width: 80px;
+  border-right: 2px solid;
+  padding: 0px 15px 0px 8px;
+}
+
+.side-title{
+  text-align: center;
+  font-family: Lakki Reddy;
+  font-size: 22px;
+}
+.sidebar button{
+  width: auto;
+}
+
+.fas {
+  color: black;
+}
+
+.fa-plus {
+  color: #1a1d4e;
+
+}
+.create-item {
+  position: relative;
+  right: 30px;
+  bottom: 28px;
+
+}
+
+.fa-tshirt.add-outfit{
+  box-sizing: border-box;
+  padding: 5px 0px;
+}
+.create-outfit{
+  position: relative;
+  right: 30px;
+  bottom: 28px;
+}
+
+.add-outfit, .add-item-plus,
+.add-clothes, .add-clothes-plus{
+  position: absolute;
+}
+
+
+.add-item-plus{
+  top: 28px;
+  left: 40px;
+}
+
+.add-clothes-plus{
+  top: 32px;
+  left: 40px;
+}
+
+.first-nav {
+  margin-bottom: -30px;
+}
