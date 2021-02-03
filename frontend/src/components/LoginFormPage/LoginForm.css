@@ -1,0 +1,74 @@
+
+
+@media screen and (max-width: 450px){
+  .login-form form,
+  .login-form div,
+  .signup-form form,
+  .signup-form div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  .login-form,
+  .signup-form {
+    position: absolute;
+    border: 2px solid  #1a1d4e;
+    width: 200px;
+    margin: 250px 100px;
+    background-color: white;
+  }
+
+  .login-button{
+    text-align: center;
+    padding: 5px;
+  }
+
+  .login-button button {
+    border: 2px solid #1a1d4e;
+    background-color:  #1a1d4e;
+    border-radius: 4px;
+    color: white;
+    font-family: Lora;
+  }
+
+  form label{
+    box-sizing: border-box;
+    margin: 5px;
+  }
+  .login-container {
+    position: fixed;
+    left: 0;
+    bottom: 50;
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .login-container img{
+    height: auto;
+    width: 450px;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  .validation-input input {
+    border-color:  #1a1d4e;
+    border-style: solid;
+    border-radius: 4px;
+    text-align: center;
+    font-style: italic;
+    font-family: Lora;
+
+  }
+}

@@ -1,1 +1,23 @@
 /* TODO Add site wide styles */
+#root {
+  position: relative;
+  font-family: Lora;
+}
+
+.login-signup-title{
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  width: 100vw;
+  padding-top: 100px;
+  font-family: Lakki Reddy, cursive;
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+@media screen and (max-width: 450px){
+  .login-signup-title{
+    width: 414px;
+  }
+}

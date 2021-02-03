@@ -194,3 +194,6 @@ Let's take a deeper dive into the different aspects of the application, which wi
   3. Heroku
   4. [React Palette](https://www.npmjs.com/package/react-palette)
   5. AWS
+
+
+<img srcset="//i5.walmartimages.com/asr/b07314a3-b5e8-4b77-b12a-2948bf73a0fe.f565f62b95a336d5260edf74b0a63116.jpeg?odnWidth=612&amp;odnHeight=612&amp;odnBg=ffffff 1x, //i5.walmartimages.com/asr/b07314a3-b5e8-4b77-b12a-2948bf73a0fe.f565f62b95a336d5260edf74b0a63116.jpeg?odnWidth=1000&amp;odnHeight=1000&amp;odnBg=ffffff 2x" itemprop="image" loading="lazy" src="//i5.walmartimages.com/asr/b07314a3-b5e8-4b77-b12a-2948bf73a0fe.f565f62b95a336d5260edf74b0a63116.jpeg?odnWidth=612&amp;odnHeight=612&amp;odnBg=ffffff" alt="Chesapeake Kenley Blackberry Polka Dots Wallpaper" class="larger-hero-image-carousel-image">

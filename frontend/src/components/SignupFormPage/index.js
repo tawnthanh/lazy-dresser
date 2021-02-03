@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
+import polkaDots from "../../imgs/purple-polka-dots.jpeg"
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -27,51 +28,66 @@ function SignupFormPage() {
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
+  let title = "LAzY\ndREsSeR"
+
   return (
     <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Username
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Confirm Password
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
+      <h1 className="login-signup-title">
+       {title}
+      </h1>
+      <div className="login-container">
+        <img src={polkaDots} alt="polka-dots"/>
+      </div>
+      <div className="signup-form">
+        <form onSubmit={handleSubmit}>
+          <div>
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </div>
+          <label className="validation-input">
+            <input
+              type="text"
+              value={email}
+              placeholder="email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          <label className="validation-input">
+            <input
+              type="text"
+              value={username}
+              placeholder="username"
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </label>
+          <label className="validation-input">
+            <input
+              type="password"
+              value={password}
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          <label className="validation-input">
+            <input
+              type="password"
+              value={confirmPassword}
+              placeholder="confirm password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </label>
+          <div className="login-button">
+              <button type="submit">Open Closet</button>
+          </div>
+        </form>
+        <div className="login-redirect">
+            {"Oops, already have a closet? "}
+            <NavLink to="/login">Login</NavLink>
+        </div>
+      </div>
     </>
   );
 }
