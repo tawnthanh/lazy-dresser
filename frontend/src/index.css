@@ -1,16 +1,47 @@
 /* TODO Add site wide styles */
-*{
+@media screen and (max-width: 450px){
+  #root {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 450px;
+    height: 97vh;
+    background-color: white;
+    border: 1px solid black;
+  }
+
+  .login-signup-title{
+    width: 414px;
+  }
+}
+
+body {
   font-family: Lora;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(196, 255, 199, 0.815);
 }
 #root {
   position: relative;
   display: flex;
   flex-direction: row;
+  width: 800px;
+  height: 97vh;
+  background-color: white;
+  border: 1px solid black;
 }
 
 .content{
-  position: absolute;
-  left: 120px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+
 }
 .login-signup-title{
   box-sizing: border-box;
@@ -24,8 +55,9 @@
   margin: 0;
 }
 
-@media screen and (max-width: 450px){
-  .login-signup-title{
-    width: 414px;
-  }
+div a{
+  text-decoration: none;
+  color: black;
+  margin: 0;
+  padding: 0;
 }

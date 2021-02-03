@@ -1,0 +1,16 @@
+.edit-profile-button{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.fas.fa-cog,
+.fa-tshirt.main{
+  color: #1a1d4e;
+}
+
+.content .view-content {
+  align-self: center;
+  width: 200px;
+  box-sizing: border-box;
+}

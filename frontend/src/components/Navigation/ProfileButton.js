@@ -64,7 +64,8 @@ function ProfileButton({ user }) {
             {/* <ProfileButton user={sessionUser} /> */}
 
             <NavLink to="/"><i className="fas fa-user-circle fa-3x" /></NavLink>
-          </div>
+            </div>
+            <button onClick={logout}>Log Out</button>
         </div>
       </>
         // <ul className="profile-dropdown">

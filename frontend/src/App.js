@@ -31,6 +31,9 @@ function App() {
           <Route path="/" exact={true}>
             <ProfilePage />
           </Route>
+          <Route path="/edit-profile" exact={true}>
+            <ProfilePage />
+          </Route>
         </Switch>
       )}
     </>
