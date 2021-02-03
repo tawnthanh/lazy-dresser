@@ -1,3 +1,16 @@
+# LAzYdREsSer
+
+## Table of Contents
+
+- [Project Description](#project-description)
+- [MVP](#mvp)
+- [Bonus Features](#bonus-features)
+- [Database Schema and Diagram](#database-schema-and-diagram)
+- [Wireframe](#wireframe)
+- [Planned Routes](#planned-routes)
+- [React Component List](#react-component-list)
+- [Planned Technologies](#planned-technologies)
+
 # Project Description
 
 "LAzYdREsSer" is an application built to assist users on their closet inventory. Ever wake up for work, school, or interview and thought, "What do I have to wear?". This app is supposed to help you create your outfits by having a section for all your clothing items. If you ever get stuck, the application will also have a randomization button to help you as well.
@@ -24,48 +37,160 @@ Let's take a deeper dive into the different aspects of the application, which wi
 2. Create Outfit
 3. Randomizing Look
 
-# Bonus Features/Stretch Goals
+# Bonus Features
 
-1. Allow the user to create "closets" that will pertain all the outfit variations they could want. This closet could be work, party, casual, athletic, etc.
+1. Allow users to update their outfit pieces
 
-2. Advance the randomization algorithm so it does more than just compare the colors and ensure all the components are there. I would like to have the user be able to filter the randomization based on color, clothing item, style, and occasion.
+2. Allow the user to create "closets" that will pertain all the outfit variations they could want. This closet could be work, party, casual, athletic, etc.
 
-3. A big stretch that I would love is to integrate outside retail sites into the app to allow users to see how the item they're interested in integrates to their wardrobe.
+3. Advance the randomization algorithm so it does more than just compare the colors and ensure all the components are there. I would like to have the user be able to filter the randomization based on color, clothing item, style, and occasion.
+
+4. A big stretch that I would love is to integrate outside retail sites into the app to allow users to see how the item they're interested in integrates to their wardrobe.
 
 # Database Schema and Diagram
-  - [Work in progress](https://drawsql.app/app-academy-23/diagrams/lazy-dresser-1)
+  [Database Schema Image](https://drawsql.app/app-academy-23/diagrams/lazy-dresser-1)
 
-# Sketches of Wireframes
+  ![Database Schema Image](./wireframe/database-schema.png)
 
-  ![Homepage](./wireframe/homepage.png)
+  ## 1. Users
+  | Column | Type | Details |
+  |--------|------|---------|
+  |id      |serial|PK       |
+  |username|string(50)|not null|
+  |email|string(255)|not null|
+  |hashedPassword|binary|not null|
+
+  - One-to-many relationship association with "ClothingItems" table
+  - One-to-many relationship association with "Outfits" table
+  - One-to-many relationship association with "Closets" table
+
+  ## 2. ItemTypes
+  | Column | Type | Details |
+  |--------|------|---------|
+  |id      |serial|PK       |
+  |type|string(50)|not null|
+
+  - One-to-many relationship association with "ClothingItems" table
+
+  ## 3. Fits
+  | Column | Type | Details |
+  |--------|------|---------|
+  |id      |serial|PK       |
+  |type|string(50)|not null|
+
+  - One-to-many relationship association with "ClothingItems" table
+
+  ## 4. Occasions
+  | Column | Type | Details |
+  |--------|------|---------|
+  |id      |serial|PK       |
+  |type|string(50)|not null|
+  |description|string(1000)| |
+
+  - One-to-many relationship association with "ClothingItems" table
+
+  ## 4. ClothingItems
+  | Column | Type | Details |
+  |--------|------|---------|
+  |id      |serial|PK       |
+  |title|string(150)|not null|
+  |description|string(1000)| |
+  |primaryColor|string(50)|not null|
+  |secondaryColor|string(50)|not null|
+  |itemTypeId|int|not null, FK ("ItemTypes")|
+  |fitId|int|not null, FK ("Fits")|
+  |userId|int|not null, FK ("Users")|
+  |occasionId|int|not null, FK ("Occasions")|
+
+  - One-to-many relationship association with "Users" table
+  - One-to-many relationship association with "ItemTypes" table
+  - One-to-many relationship association with "Fits" table
+  - One-to-many relationship association with "Occasions" table
+  - Many-to-many relationship association with "Outfits" table through "OutfitList"
+
+  ## 5. Outfits
+  | Column | Type | Details |
+  |--------|------|---------|
+  |id      |serial|PK       |
+  |title|string(150)|not null|
+  |description|string(1000)| |
+  |userId|int|not null, FK ("Users")|
+
+  - One-to-many relationship association with "Users" table
+  - Many-to-many relationship association with "ClothingItems" table through "OutfitList"
+  - Many-to-many relationship association with "Closets" table through "ClosetOutfits"
+
+  ## 6. OutfitList
+  | Column | Type | Details |
+  |--------|------|---------|
+  |id      |serial|PK       |
+  |clothingItemId|int|not null, FK ("ClothingItems")|
+  |outfitId|int|not null, FK ("Outfits")|
+
+  ## 7. Closets (Bonus Feature Table)
+  | Column | Type | Details |
+  |--------|------|---------|
+  |id      |serial|PK       |
+  |title|string(150)|not null|
+  |description|string(1000)| |
+  |outfitId|int|not null, FK ("Outfits")|
+  |occasionId|int|not null, FK ("Occasions")|
+  |userId|int|not null, FK ("Users")|
+
+  - One-to-many relationship association with "Users" table
+  - One-to-many relationship association with "Occasions" table
+  - Many-to-many relationship association with "Outfits" table through "ClosetOutfits"
+
+## 8. OutfitList (Bonus Feature Table)
+| Column | Type | Details |
+|--------|------|---------|
+|id      |serial|PK       |
+|closetId|int|not null, FK ("Closets")|
+|outfitId|int|not null, FK ("Outfits")|
+
+# Wireframe
+
+  ![Login](./wireframe/login.png)
+  ![Sign-Up](./wireframe/signup.png)
+  ![Landing Page](./wireframe/main-page.png)
+  ![Profile Update](./wireframe/edit-profile.png)
+  ![Item List](./wireframe/items-list.png)
+  ![Create Item](./wireframe/new-item.png)
+  ![Update Item](./wireframe/edit-item.png)
+  ![Outfit List](./wireframe/outfit-list.png)
+  ![Create Outfit](./wireframe/create-outfit.png)
+
 # Planned Routes
-  Work in progress, kind of stuck on what the first page should be once the user logs in/signs up.
 
-  1. /login
-  2. /signup
-  3. /outfit - a list of all their outfits
-  4. /outfit/:id - this is for the outfit
-  5. /item - a list of all their clothing items
-  6. /item/:id - this is for the clothing item
-  7. /item/create - to create item for their inventory
+  1. / - landing page once logged in
+  2. /login
+  3. /signup
+  4. /outfit - a list of all their outfits
+  5. /items - a list of all their clothing items
+  6. /item/create - to create item for their inventory
+  7. /item/:id/edit - to edit details about their
+  8. /profile/edit
+
 
 # React Component List
-  - Work in progress
 
   1. Login
   2. SignUp
   3. CreateItemForm
   4. ItemList
   5. OutfitList
-  6. SingleItem
-  7. SingleOutfit
-  8. CreateOutfitForm
+  6. SingleOutfit
+  7. CreateOutfitForm
+  8. ItemDescription
+  9. EditItem
+  10. UpdateInformationForm
+  11. ProfilePage
+  12. Sidebar/Navbar
 
-# List of planned technologies
-  - Work in progress
+# Planned Technologies
 
   1. Express
   2. React
   3. Heroku
-  4. [ColorTag API](https://rapidapi.com/cloud-actions-cloud-actions-default/api/image-color-tag/endpoints) or [Color From Picture API](https://rapidapi.com/hotpot-ai-hotpot/api/color-from-picture) to detect colors
+  4. [React Palette](https://www.npmjs.com/package/react-palette)
   5. AWS
