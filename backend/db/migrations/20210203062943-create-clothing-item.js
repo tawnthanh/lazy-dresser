@@ -10,18 +10,22 @@ module.exports = {
       },
       title: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING(150)
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(1000)
+      },
+      imgUrl: {
+        type: Sequelize.STRING(1000),
+        allowNull: false,
       },
       primaryColor: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50)
       },
       secondaryColor: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50)
       },
       itemTypeId: {
         allowNull: false,

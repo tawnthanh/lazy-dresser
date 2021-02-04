@@ -23,5 +23,20 @@ module.exports = (sequelize, DataTypes) => {
     ClothingItem.belongsTo(models.Fit, { foreignKey: "fitId" });
     ClothingItem.belongsTo(models.Occasion, { foreignKey: "occasionId" });
   };
+
+  ClothingItem.addItem = async function ({ title, description, imgUrl, primaryColor, secondaryColor, itemTypeId, fitId, userId, occasionId }) {
+    const item = await ClothingItem.create({
+      title,
+      description,
+      imgUrl,
+      primaryColor,
+      secondaryColor,
+      itemTypeId,
+      fitId,
+      userId,
+      occasionId
+    });
+    return await ClothingItem.scope('currentItem').findByPk(item.id);
+  }
   return ClothingItem;
 };
