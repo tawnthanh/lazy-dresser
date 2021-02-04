@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, NavLink } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import * as sessionActions from '../../store/session';
+import { NavLink } from "react-router-dom";
+// import { useDispatch } from 'react-redux';
+// import * as sessionActions from '../../store/session';
 import hanger from "../../imgs/hanger-64.png"
 
 function ProfileButton({ user }) {
-  const dispatch = useDispatch();
-  const history = useHistory();
   const [showMenu, setShowMenu] = useState(true);
 
   const openMenu = () => {
@@ -35,11 +33,11 @@ function ProfileButton({ user }) {
         <>
         <div className="sidebar">
           <div className="view-items">
-            <NavLink to="/items"><img className="fas" src={hanger}/></NavLink>
+              <NavLink to="/items"><img className="fas" src={hanger} alt={hanger}/></NavLink>
           </div>
           <div className="create-item">
             <NavLink to="/item/create">
-              <img className="add-clothes" src={hanger}/>
+                <img className="add-clothes" src={hanger} alt={hanger}/>
                 <i className="add-clothes-plus fas fa-plus fa-2x"></i>
             </NavLink>
           </div>

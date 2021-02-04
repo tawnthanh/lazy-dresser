@@ -5,7 +5,7 @@ const asyncHandler = require('express-async-handler');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie } = require('../../utils/auth');
 const { ClothingItem } = require('../../db/models');
-const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3.js');
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 
 const router = express.Router();
@@ -40,16 +40,16 @@ const validateItemUpload = [
 router.post("/create",
   singleMulterUpload("image"),
   validateItemUpload,
-  asyncHandler(async(req, res => {
+  asyncHandler( async (req, res) => {
     const { title, description, primaryColor, secondaryColor, itemTypeId, fitId, userId, occasionId } = req.body;
-    const imgUrl = await singlePublicFileUpload(req.file);
+    const imgUrl =  singlePublicFileUpload(req.file);
 
     const item = await ClothingItem.addItem({ title, description, imgUrl, primaryColor, secondaryColor, itemTypeId, fitId, userId, occasionId });
 
-    await setTokenCookie(res, item);
+    setTokenCookie(res, item);
 
     return res.json({ item });
-  }))
+  })
 )
 
 module.exports = router;

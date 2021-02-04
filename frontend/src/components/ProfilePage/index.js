@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Redirect, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./ProfilePage.css";
@@ -23,7 +22,7 @@ const ProfilePage = () => {
         <h2>What would you like to do?</h2>
         <NavLink to="/items" className="view-content">
           <div className="view-content">
-            <img className="fas fa-hanger" src={hanger} />
+            <img className="fas fa-hanger" src={hanger} alt={hanger}/>
             <h2>View Inventory</h2>
           </div>
         </NavLink>

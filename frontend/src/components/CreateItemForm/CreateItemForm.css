@@ -1,0 +1,76 @@
+.add-item{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template:
+  "image upload"
+  "image colorBlock"
+  "image mainSelect"
+  "image secondSelect"
+  "title title"
+  "itemType itemType"
+  "fit fit"
+  "occasion occasion"
+  "description description";
+  align-items: stretch;
+  justify-self: stretch;
+}
+
+.image-upload{
+  grid-area: image;
+  width: 400px;
+  height: auto;
+  border-radius: 50%;
+  background-color: yellow;
+}
+
+.file-upload{
+  grid-area: upload;
+}
+
+.color-block{
+  grid-area: colorBlock;
+  width: 100%;
+  height: 40px;
+  border: 2px solid green;
+}
+
+.main-color-select{
+  grid-area: mainSelect;
+  width: 100%;
+
+}
+
+.second-color-select{
+  grid-area: secondSelect;
+  width: 100%;
+
+}
+
+.add-item-title{
+  grid-area: title;
+  width: 100%;
+
+}
+
+.add-item-itemType{
+  grid-area: itemType;
+  width: 100%;
+
+}
+
+.add-item-fit{
+  grid-area: fit;
+  width: 100%;
+
+}
+
+.add-item-occasion{
+  grid-area: occasion;
+  width: 100%;
+
+}
+
+.add-item-description{
+  width: 100%;
+  grid-area: description;
+}
