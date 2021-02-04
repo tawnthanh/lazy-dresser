@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
-import polkaDots from "../../imgs/purple-polka-dots.jpeg"
+import closet from "../../imgs/closed-closet.png"
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -25,31 +25,28 @@ function SignupFormPage() {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         });
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    return setErrors(['Confirmed password must match password.']);
   };
 
   let title = "LAzY\ndREsSeR"
 
   return (
-    <>
-      <h1 className="login-signup-title">
+    <div className="content signup-login">
+      <h1 className="main-title">
        {title}
       </h1>
-      <div className="login-container">
-        <img src={polkaDots} alt="polka-dots"/>
+      <div className="closet-container">
+        <img src={closet} alt="polka-dots"/>
       </div>
-      <div className="signup-form">
-        <form onSubmit={handleSubmit}>
-          <div>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </div>
+        <form className="signup-form" onSubmit={handleSubmit}>
+
           <label className="validation-input">
             <input
               type="text"
               value={email}
               placeholder="email"
               onChange={(e) => setEmail(e.target.value)}
-              required
+              // required
             />
           </label>
           <label className="validation-input">
@@ -58,7 +55,7 @@ function SignupFormPage() {
               value={username}
               placeholder="username"
               onChange={(e) => setUsername(e.target.value)}
-              required
+              // required
             />
           </label>
           <label className="validation-input">
@@ -67,7 +64,7 @@ function SignupFormPage() {
               value={password}
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
-              required
+              // required
             />
           </label>
           <label className="validation-input">
@@ -76,11 +73,15 @@ function SignupFormPage() {
               value={confirmPassword}
               placeholder="confirm password"
               onChange={(e) => setConfirmPassword(e.target.value)}
-              required
+              // required
             />
           </label>
-          <div className="login-button">
-              <button type="submit">Open Closet</button>
+          <button className="login-button" type="submit">Open Closet</button>
+          <div className="signup-errors">
+          {errors.map((error, idx) =>{
+            if (idx % 2) return <li key={idx}>{error}</li>;
+            else return;
+          })}
           </div>
         </form>
         <div className="login-redirect">
@@ -88,7 +89,6 @@ function SignupFormPage() {
             <NavLink to="/login">Login</NavLink>
         </div>
       </div>
-    </>
   );
 }
 

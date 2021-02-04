@@ -1,11 +1,6 @@
-.edit-profile-button{
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
 .fas.fa-cog,
-.fa-tshirt.main{
+.fa-tshirt.main,
+.fa-sign-out-alt.main{
   color: #1a1d4e;
 }
 
@@ -13,4 +8,5 @@
   align-self: center;
   width: 200px;
   box-sizing: border-box;
+  cursor: pointer;
 }

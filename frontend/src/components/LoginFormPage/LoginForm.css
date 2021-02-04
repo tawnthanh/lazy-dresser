@@ -1,74 +1,58 @@
+.login-container img{
+  width: 100%;
+  height: 97vh;
+  position: absolute;
+  top: 0;
+  left: 0;
 
+}
 
-@media screen and (max-width: 500px){
-  .login-form form,
-  .login-form div,
-  .signup-form form,
-  .signup-form div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-    box-sizing: border-box;
-  }
+.main-title,
+.login-form,
+.signup-redirect,
+.signup-login button,
+.signup-form,
+.login-redirect{
+  z-index: 100;
+}
 
-  .login-form,
-  .signup-form {
-    position: absolute;
-    border: 2px solid  #1a1d4e;
-    width: 200px;
-    margin: 250px 100px;
-    background-color: white;
-  }
+.content.signup-login{
+  align-items: center;
+}
 
-  .login-button{
-    text-align: center;
-    padding: 5px;
-  }
+.login-form{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-left: 1px solid #1a1d4e;
+  border-top: 1px solid #1a1d4e;
+  border-right: 1px solid #1a1d4e;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 5px;
+  width: 176px;
+}
 
-  .login-button button {
-    border: 2px solid #1a1d4e;
-    background-color:  #1a1d4e;
-    border-radius: 4px;
-    color: white;
-    font-family: Lora;
-  }
+.signup-redirect{
+  border-left: 1px solid #1a1d4e;
+  border-right: 1px solid #1a1d4e;
+  border-bottom: 1px solid #1a1d4e;
+  background-color: white;
+  width: 174px;
+  padding: 10px 0px;
+}
 
-  form label{
-    box-sizing: border-box;
-    margin: 5px;
-  }
-  .login-container {
-    position: fixed;
-    left: 0;
-    bottom: 50;
-    height: auto;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
+.login-errors{
+  font-size: 12px;
+  color: red;
+  white-space: pre-wrap;
+}
+.main-title{
+  white-space: pre-wrap;
+  font-family: Lakki Reddy;
+  font-size: 40px;
+  position: absolute;
+  z-index: 101;
+  top: 30px;
 
-  .login-container img{
-    height: auto;
-    width: 450px;
-    position: fixed;
-    top: 60px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-  }
-
-
-  .validation-input input {
-    border-color:  #1a1d4e;
-    border-style: solid;
-    border-radius: 4px;
-    text-align: center;
-    font-style: italic;
-    font-family: Lora;
-
-  }
 }

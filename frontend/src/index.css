@@ -20,7 +20,7 @@ body {
   align-items: center;
   display: flex;
   justify-content: center;
-  background-color: rgba(196, 255, 199, 0.815);
+  background-color: rgb(224, 224, 224);
 }
 #root {
   position: relative;
@@ -40,7 +40,6 @@ body {
   flex-direction: column;
   justify-content: center;
   position: relative;
-
 
 }
 .login-signup-title{

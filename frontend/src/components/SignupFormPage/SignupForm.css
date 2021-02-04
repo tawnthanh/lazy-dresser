@@ -2,3 +2,67 @@
 .signup-redirect{
   font-size: 12px;
 }
+
+.login-redirect a,
+.signup-redirect a {
+  text-decoration: underline;
+  color: #1a1d4e
+}
+.signup-form{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-left: 2px solid #1a1d4e;
+  border-top: 2px solid #1a1d4e;
+  border-right: 2px solid #1a1d4e;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 188px;
+}
+
+.signup-errors{
+  font-size: 12px;
+  color: red;
+  text-align: left;
+}
+.login-redirect{
+  width: 184px;
+  background-color: white;
+  border-right: 2px solid #1a1d4e;
+  border-left: 2px solid #1a1d4e;
+  border-bottom: 2px solid #1a1d4e;
+  padding: 5px 0px;
+}
+
+label input{
+  text-align: center;
+  font-style: italic;
+  border: 1px solid #1a1d4e;
+  border-radius: 4px;
+}
+
+.login-button {
+  box-sizing: border-box;
+  margin: 2px 0px;
+  background-color: #1a1d4e;
+  color: white;
+  border: 2px solid #1a1d4e;
+  border-radius: 4px;
+  font-family: Lora;
+}
+.closet-container img{
+  width: auto;
+  height: 550px;
+  position: absolute;
+  top: 0;
+  z-index: 99;
+}
+
+.closet-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
