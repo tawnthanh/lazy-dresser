@@ -7,7 +7,10 @@
   width: 80px;
   color: #1a1d4e;
   margin-left: 8px;
-  /* border: 1px solid yellow; */
+  z-index: 300;
+  text-align: center;
+  font-family: Lora;
+  font-size: 22px;
 }
 
 .sidebar{
@@ -18,15 +21,10 @@
   align-items: center;
   height: 97vh;
   width: 80px;
-  border-right: 2px solid;
+  border-right: 1px solid;
   padding: 0px 15px 0px 8px;
 }
 
-.side-title{
-  text-align: center;
-  font-family: Lora;
-  font-size: 22px;
-}
 .sidebar button{
   width: auto;
 }
@@ -39,7 +37,7 @@
   color: #1a1d4e;
 
 }
-.create-item {
+.create-outfit {
   position: relative;
   right: 30px;
   bottom: 28px;
@@ -50,7 +48,7 @@
   box-sizing: border-box;
   padding: 5px 0px;
 }
-.create-outfit{
+.create-item{
   position: relative;
   right: 30px;
   bottom: 28px;
@@ -72,6 +70,14 @@
   left: 40px;
 }
 
-.first-nav {
+.view-items {
   margin-bottom: -30px;
+}
+
+.view-items:hover,
+.create-item:hover,
+.view-outfits:hover,
+.create-outfit:hover,
+.profile:hover{
+  margin-left: 5px;
 }

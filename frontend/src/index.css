@@ -40,8 +40,10 @@ body {
   flex-direction: column;
   justify-content: center;
   position: relative;
-
+  box-sizing: border-box;
+  padding: 25px;
 }
+
 .login-signup-title{
   box-sizing: border-box;
   position: absolute;

@@ -26,14 +26,6 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logout());
-  };
-
-  const redirect = () => {
-    history.push("/")
-  }
   return (
     <div className="full-sidebar">
       <div onClick={openMenu}>
@@ -42,25 +34,25 @@ function ProfileButton({ user }) {
       {showMenu && (
         <>
         <div className="sidebar">
-          <div className="first-nav">
+          <div className="view-items">
             <NavLink to="/items"><img className="fas" src={hanger}/></NavLink>
           </div>
-          <div className="create-outfit">
+          <div className="create-item">
             <NavLink to="/item/create">
               <img className="add-clothes" src={hanger}/>
                 <i className="add-clothes-plus fas fa-plus fa-2x"></i>
             </NavLink>
           </div>
-          <div>
+          <div className="view-outfits">
             <NavLink to="/outfits"><i className="fas fa-tshirt fa-3x"></i></NavLink>
           </div>
-          <div className="create-item">
+          <div className="create-outfit">
             <NavLink to="/outfit/create">
                 <i className="add-outfit fas fa-tshirt fa-3x"></i>
                 <i className="add-item-plus fas fa-plus fa-2x"></i>
             </NavLink>
             </div>
-            <div>
+            <div className="profile">
             {/* <ProfileButton user={sessionUser} /> */}
 
             <NavLink to="/"><i className="fas fa-user-circle fa-3x" /></NavLink>

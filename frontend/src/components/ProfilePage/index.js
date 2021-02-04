@@ -23,7 +23,7 @@ const ProfilePage = () => {
         <h2>What would you like to do?</h2>
         <NavLink to="/items" className="view-content">
           <div className="view-content">
-            <img className="fas" src={hanger} />
+            <img className="fas fa-hanger" src={hanger} />
             <h2>View Inventory</h2>
           </div>
         </NavLink>

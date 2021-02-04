@@ -1,12 +1,40 @@
-.fas.fa-cog,
+/* .fas.fa-cog,
 .fa-tshirt.main,
 .fa-sign-out-alt.main{
   color: #1a1d4e;
-}
+} */
 
 .content .view-content {
   align-self: center;
   width: 200px;
   box-sizing: border-box;
   cursor: pointer;
+  color: #1a1d4e;
+}
+
+.content{
+  color: #1a1d4e;
+}
+
+.view-content .fa-tshirt{
+  border: 3px solid #1a1d4e;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.view-content .fa-hanger{
+  border: 3px solid #1a1d4e;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+.fa-sign-out-alt:hover{
+  padding-left: 5px;
+}
+
+.view-content .fa-hanger:hover,
+.view-content .fa-tshirt:hover{
+  margin-left: 5px;
 }
