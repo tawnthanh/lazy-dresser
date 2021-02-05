@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import "./CreateItemForm.css";
 import { usePalette } from "react-palette";
-import {grabFixedFields} from "../../store/items";
+import {grabFixedFields, createItem} from "../../store/items";
 
 const CreateItemForm = ({ user }) => {
   const dispatch = useDispatch();
@@ -12,11 +12,11 @@ const CreateItemForm = ({ user }) => {
   const [image, setImage] = useState("");
   const [baseImage, setBaseImage] = useState("")
   const [title, setTitle] = useState("");
-  const [itemType, setItemType] = useState(0);
-  const [fit, setFit] = useState(0);
-  const [occasion, setOccasion] = useState(0);
+  const [itemType, setItemType] = useState(null);
+  const [fit, setFit] = useState(null);
+  const [occasion, setOccasion] = useState(null);
   const [description, setDescription] = useState("");
-  // const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [mainColorState, setMainColorState] = useState("")
   const [secondColorState, setSecondColorState] = useState("")
 
@@ -73,8 +73,11 @@ const CreateItemForm = ({ user }) => {
       "userId": user.id,
       "occasionId": occasion,
     }
-    console.log(item)
-    return
+    return dispatch(createItem(item))
+      .catch(res => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+        console.log(res.data)
+      });
   }
   return (
     <div className="content">
@@ -100,7 +103,6 @@ const CreateItemForm = ({ user }) => {
               <div className={data.lightMuted? "found-color": "other-colors"} style={{backgroundColor:data.lightMuted}}></div>
               <div className={data.darkVibrant? "found-color": "other-colors"}style={{backgroundColor:data.darkVibrant}}></div>
               <div className={data.lightVibrant? "found-color": "other-colors"} style={{backgroundColor:data.lightVibrant}}></div>
-              {/* <div className="other-color-7 " style={{backgroundColor:"black"}}></div> */}
             </div>
           </div>
           <label className="main-color-select">
@@ -187,10 +189,19 @@ const CreateItemForm = ({ user }) => {
               onChange={(e)=>setDescription(e.target.value)}
             />
           </label>
+          <ul className="add-item-errors">
+          {!!errors &&
+              errors.map((err, idx) => {
+                return <li key={`err-${idx}`}>{err}</li>
+              })
+            }
+          </ul>
           <button className="create-item-button" type="submit">Create Item</button>
           <button className="create-item-button" onClick={resetItems}>Reset</button>
+
         </div>
       </form>
+
     </div>
   );
 };

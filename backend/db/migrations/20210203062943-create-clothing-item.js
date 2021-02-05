@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING(1000)
       },
       imgUrl: {
-        type: Sequelize.STRING(1000),
+        type: Sequelize.STRING,
         allowNull: false,
       },
       primaryColor: {

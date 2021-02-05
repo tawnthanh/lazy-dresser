@@ -14,23 +14,23 @@ const validateItemUpload = [
   check('title')
     .exists({ checkFalsy: true })
     .isLength({ min: 5 })
-    .withMessage('Please provide a title with at least 5 characters'),
+    .withMessage('Title must be at least 5 characters.'),
   check('primaryColor')
-    .exists({ checkFalsy: true })
-    .isLength({ max: 7 })
+    // .exists({ checkFalsy: true })
+    .isLength({ min: 7 })
     .withMessage('Please select a primary color.'),
   check('secondaryColor')
-    .exists({ checkFalsy: true })
-    .isLength({ max: 7 })
+    // .exists({ checkFalsy: true })
+    .isLength({ min: 7 })
     .withMessage('Please select a secondary color.'),
   check('itemTypeId')
-    .exists({ checkFalsy: true })
+    .isInt({min:1})
     .withMessage('Please select an item type.'),
   check('fitId')
-    .exists({ checkFalsy: true })
+    .isInt({min:1})
     .withMessage('Please select a fit type.'),
   check('occasionId')
-    .exists({ checkFalsy: true })
+    .isInt({min:1})
     .withMessage('Please select an occasion.'),
   handleValidationErrors
 ];
@@ -57,13 +57,24 @@ router.post("/create",
   validateItemUpload,
   asyncHandler( async (req, res) => {
     const { title, description, primaryColor, secondaryColor, itemTypeId, fitId, userId, occasionId } = req.body;
-    const imgUrl =  singlePublicFileUpload(req.file);
+    const imgUrl =  await singlePublicFileUpload(req.file);
 
-    const item = await ClothingItem.addItem({ title, description, imgUrl, primaryColor, secondaryColor, itemTypeId, fitId, userId, occasionId });
+    console.log(imgUrl)
+    // const item = await ClothingItem.addItem({
+    //   title,
+    //   description,
+    //   imgUrl,
+    //   primaryColor,
+    //   secondaryColor,
+    //   itemTypeId,
+    //   fitId,
+    //   userId,
+    //   occasionId
+    // });
 
-    setTokenCookie(res, item);
+    // setTokenCookie(res, item);
 
-    return res.json({ item });
+    // return res.json({ item });
   })
 )
 
