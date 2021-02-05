@@ -37,25 +37,32 @@
 }
 
 .main-color-pulled{
-  background-color: blue;
+  width: 100px;
+  height: 30px;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.main-found{
   width: 100px;
   height: 30px;
   border: 2px solid white;
   box-sizing: border-box;
 }
-
-.other-color-2,
-.other-color-3,
-.other-color-4,
-.other-color-5,
-.other-color-6,
-.other-color-7{
+.found-color{
   box-sizing: border-box;
   border: 2px solid white;
   height: 14px;
   width: 33%;
 }
 
+.other-colors{
+  box-sizing: border-box;
+  border: 1px solid black;
+  height: 14px;
+  width: 31.5%;
+  margin: 1px;
+}
 .secondary-color-pulled{
   display:flex;
   flex-wrap: wrap;
@@ -108,6 +115,9 @@
   color: white;
   background-color: #1a1d4e;
   font-family: Lora;
+  width: 105px;
+  box-sizing: border-box;
+  margin-bottom: 5px;
 }
 
 .create-item-button:active{

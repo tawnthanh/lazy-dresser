@@ -7,8 +7,6 @@ import Palette, { usePalette } from "react-palette";
 const CreateItemForm = ({ user }) => {
   const [image, setImage] = useState("");
   const [baseImage, setBaseImage] = useState("")
-  const [mainColor, setMainColor] = useState("");
-  const [secondaryColor, setSecondaryColor] = useState("");
   const [title, setTitle] = useState("");
   const [itemType, setItemType] = useState(0);
   const [fit, setFit] = useState(0);
@@ -43,6 +41,17 @@ const CreateItemForm = ({ user }) => {
     })
   };
 
+  const resetItems = () => {
+    setImage("");
+    setBaseImage("");
+    setMainColorState("");
+    setSecondColorState("");
+    setTitle("");
+    setItemType(0);
+    setFit(0);
+    setOccasion(0);
+    setDescription("")
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("hi")
@@ -64,14 +73,14 @@ const CreateItemForm = ({ user }) => {
               <input type="file" onChange={updateFile} />
           </label>
           <div className="color-block">
-            <div className="main-color-pulled" onClick={() => console.log(data)} style={{ backgroundColor: data.darkMuted }}>
+            <div className={data.darkMuted? "main-found ": "main-color-pulled"} onClick={() => console.log(data)} style={{ backgroundColor: data.darkMuted }}>
           </div>
             <div className="secondary-color-pulled">
-              <div className="other-color-2 " style={{backgroundColor:data.muted}}></div>
-              <div className="other-color-3 " style={{backgroundColor:data.vibrant}}></div>
-              <div className="other-color-4 " style={{backgroundColor:data.lightMuted}}></div>
-              <div className="other-color-5 " style={{backgroundColor:data.darkVibrant}}></div>
-              <div className="other-color-6 " style={{backgroundColor:data.lightVibrant}}></div>
+              <div className={data.muted ? "found-color" : "other-colors"} style={{ backgroundColor: data.muted }}></div>
+              <div className={data.vibrant? "found-color": "other-colors"} style={{backgroundColor:data.vibrant}}></div>
+              <div className={data.lightMuted? "found-color": "other-colors"} style={{backgroundColor:data.lightMuted}}></div>
+              <div className={data.darkVibrant? "found-color": "other-colors"}style={{backgroundColor:data.darkVibrant}}></div>
+              <div className={data.lightVibrant? "found-color": "other-colors"} style={{backgroundColor:data.lightVibrant}}></div>
               {/* <div className="other-color-7 " style={{backgroundColor:"black"}}></div> */}
             </div>
           </div>
@@ -82,8 +91,11 @@ const CreateItemForm = ({ user }) => {
               style={{ backgroundColor: mainColorState, width: "100%" }}
             >
               <option value="">Main Color</option>
-              <option value={color} style={{ backgroundColor: color, width: "100%" }}>{color}</option>
-              <option value={"blue"} style={{ backgroundColor: "blue", width: "100%" }}>blue</option>
+              {data && Object.values(data).map((pulledColor, idx) => {
+                return <option value={pulledColor} key={pulledColor + "-" + idx} style={{ backgroundColor: pulledColor, width: "100%" }}>
+                  {pulledColor}
+                </option>
+              })}
             </select>
           </label>
           <label className="second-color-select">
@@ -93,8 +105,11 @@ const CreateItemForm = ({ user }) => {
               style={{ backgroundColor: secondColorState, width: "100%" }}
             >
               <option value="">Secondary Color</option>
-              <option value={color} style={{ backgroundColor: color, width: "100%" }}>{color}</option>
-              <option value={"blue"} style={{ backgroundColor: "blue", width: "100%" }}>blue</option>
+              {data && Object.values(data).map((pulledColor, idx) => {
+                return <option value={pulledColor} key={pulledColor + "-" + idx} style={{ backgroundColor: pulledColor, width: "100%" }}>
+                  {pulledColor}
+                </option>
+              })}
             </select>
           </label>
         </div>
@@ -131,6 +146,7 @@ const CreateItemForm = ({ user }) => {
             />
           </label>
           <button className="create-item-button" type="submit">Create Item</button>
+          <button className="create-item-button" onClick={resetItems}>Reset</button>
         </div>
       </form>
     </div>
