@@ -41,7 +41,7 @@ body {
   justify-content: center;
   position: relative;
   box-sizing: border-box;
-  padding: 25px;
+  padding: 25px 100px;
 }
 
 .login-signup-title{
@@ -61,4 +61,36 @@ div a{
   color: black;
   margin: 0;
   padding: 0;
+}
+
+select {
+  text-align-last: center;
+  color: #1a1d4e;
+  font-weight: bold;
+  border: 1px solid #1a1d4e;
+  border-radius: 4px;
+}
+
+label input{
+  box-sizing: border-box;
+  text-align: center;
+  border: 1px solid #1a1d4e;
+  border-radius: 4px;
+}
+
+label input::placeholder{
+  font-style: italic;
+  color: #1a1d4e;
+
+}
+
+input[type=text]:focus,
+textarea:focus{
+  border: 2px solid #1a1d4e;
+  outline: none;
+}
+
+textarea{
+  border: 1px solid #1a1d4e;
+  border-radius: 4px;
 }

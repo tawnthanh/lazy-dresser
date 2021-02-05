@@ -1,76 +1,167 @@
 .add-item{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 50%);
   grid-template:
-  "image upload"
-  "image colorBlock"
-  "image mainSelect"
-  "image secondSelect"
-  "title title"
-  "itemType itemType"
-  "fit fit"
-  "occasion occasion"
-  "description description";
-  align-items: stretch;
-  justify-self: stretch;
+  "image topRight"
+  "image topRight"
+  "bottom bottom"
+  "bottom bottom"
+  "bottom bottom";
+  font-family: Lora;
+
 }
 
 .image-upload{
   grid-area: image;
-  width: 400px;
-  height: auto;
-  border-radius: 50%;
-  background-color: yellow;
+  width: 175px;
+  height: 175px;
+  box-sizing: border-box;
+  margin: 0px 0px 20px 50px;
+  border: 2px solid #1a1d4e;
 }
 
-.file-upload{
-  grid-area: upload;
+.top-right{
+  grid-area: topRight;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 0px 50px 20px 0px;
 }
 
 .color-block{
-  grid-area: colorBlock;
-  width: 100%;
-  height: 40px;
-  border: 2px solid green;
+  height: 30px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.main-color-select{
-  grid-area: mainSelect;
-  width: 100%;
-
+.main-color-pulled{
+  background-color: blue;
+  width: 100px;
+  height: 30px;
+  border: 2px solid white;
+  box-sizing: border-box;
 }
 
-.second-color-select{
-  grid-area: secondSelect;
-  width: 100%;
-
+.other-color-2,
+.other-color-3,
+.other-color-4,
+.other-color-5,
+.other-color-6,
+.other-color-7{
+  box-sizing: border-box;
+  border: 2px solid white;
+  height: 14px;
+  width: 33%;
 }
 
-.add-item-title{
-  grid-area: title;
+.secondary-color-pulled{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   width: 100%;
-
 }
 
-.add-item-itemType{
-  grid-area: itemType;
-  width: 100%;
-
+.bottom-section{
+  grid-area: bottom;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
-.add-item-fit{
-  grid-area: fit;
+.add-item-itemType select,
+.add-item-fit select,
+.add-item-occasion select,
+.main-color-select select,
+.second-color-select select{
   width: 100%;
-
 }
 
-.add-item-occasion{
-  grid-area: occasion;
-  width: 100%;
+.add-item-itemType select option,
+.add-item-fit select option,
+.add-item-occasion select option{
+  text-align: center;
+}
 
+.add-item-title,
+.add-item-itemType,
+.add-item-fit,
+.add-item-occasion,
+.add-item-description{
+  box-sizing: border-box;
+  padding: 5px 50px;
+}
+
+.add-item-title input {
+  padding-right: 20px;
+}
+.add-item-title input[type=text]::placeholder{
+  font-style: normal;
+  font-size: 16px;
+}
+.create-item-button{
+  align-self: center;
+  border: 2px outset #14163b;
+  border-radius: 4px;
+  color: white;
+  background-color: #1a1d4e;
+  font-family: Lora;
+}
+
+.create-item-button:active{
+  transform: scale(0.99);
+}
+
+.add-item-title input,
+.add-item-itemType select,
+.add-item-fit select,
+.add-item-occasion select,
+.main-color-select select,
+.second-color-select select,
+.create-item-button{
+  height: 30px;
+  font-size: 16px;
 }
 
 .add-item-description{
-  width: 100%;
-  grid-area: description;
+  font-size: 24px;
+}
+.add-item-description textarea{
+  height: 100px;
+}
+
+.add-item-title input,
+.add-item-description textarea{
+  width: 99%;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+.file-upload{
+    border: 2px outset #14163b;
+    border-radius: 4px;
+    color: white;
+    background-color: #1a1d4e;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.file-upload:active{
+  transform: scale(0.99);
+}
+
+.file-upload,
+.color-block,
+.main-color-select,
+.second-color-select{
+  margin: 6px 0;
+}
+
+.image-upload img{
+  height: 100%;
 }

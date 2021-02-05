@@ -35,12 +35,6 @@
   padding: 5px 0px;
 }
 
-label input{
-  text-align: center;
-  font-style: italic;
-  border: 1px solid #1a1d4e;
-  border-radius: 4px;
-}
 
 .login-button {
   box-sizing: border-box;
