@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie } = require('../../utils/auth');
-const { ClothingItem } = require('../../db/models');
+const { ClothingItem, ItemType, Occasion, Fit } = require('../../db/models');
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 
@@ -34,6 +34,21 @@ const validateItemUpload = [
     .withMessage('Please select an occasion.'),
   handleValidationErrors
 ];
+
+
+//Fixed fields
+router.get("/fixed-fields", asyncHandler(async (req, res) => {
+  const itemTypePull = await ItemType.findAll({order: [["type", "ASC"]]});
+  const itemTypes = itemTypePull.map(itemType =>[itemType.id, itemType.type]);
+
+  const fitPull = await Fit.findAll({ order: [["type", "ASC"]] });
+  const fits = fitPull.map(fits => [fits.id, fits.type]);
+
+  const occasionPull = await Occasion.findAll({ order: [["type", "ASC"]] });
+  const occasions = occasionPull.map(occasion => [occasion.id, occasion.type]);
+
+  return res.json({itemTypes, fits, occasions})
+}));
 
 
 // Create Item

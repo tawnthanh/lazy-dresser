@@ -1,23 +1,30 @@
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import "./CreateItemForm.css";
-import Palette, { usePalette } from "react-palette";
+import { usePalette } from "react-palette";
+import {grabFixedFields} from "../../store/items";
 
 const CreateItemForm = ({ user }) => {
+  const dispatch = useDispatch();
+  const defaults = useSelector(state => state.items)
+
   const [image, setImage] = useState("");
   const [baseImage, setBaseImage] = useState("")
   const [title, setTitle] = useState("");
   const [itemType, setItemType] = useState(0);
   const [fit, setFit] = useState(0);
-  const [occassion, setOccasion] = useState(0);
+  const [occasion, setOccasion] = useState(0);
   const [description, setDescription] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [color, setColor] = useState("orange")
+  // const [errors, setErrors] = useState([]);
   const [mainColorState, setMainColorState] = useState("")
   const [secondColorState, setSecondColorState] = useState("")
 
-  const { data, loading, error } = usePalette(baseImage)
+  const { data } = usePalette(baseImage)
+
+  useEffect(() => {
+    dispatch(grabFixedFields());
+  }, [dispatch])
 
   const updateFile = async (e) => {
     const file = e.target.files[0];
@@ -51,10 +58,22 @@ const CreateItemForm = ({ user }) => {
     setFit(0);
     setOccasion(0);
     setDescription("")
-  }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("hi")
+    let item = {
+      title,
+      description,
+      image,
+      "primaryColor": mainColorState,
+      "secondaryColor": secondColorState,
+      "itemTypeId": itemType,
+      "fitId": fit,
+      "userId": user.id,
+      "occasionId": occasion,
+    }
+    console.log(item)
     return
   }
   return (
@@ -73,7 +92,7 @@ const CreateItemForm = ({ user }) => {
               <input type="file" onChange={updateFile} />
           </label>
           <div className="color-block">
-            <div className={data.darkMuted? "main-found ": "main-color-pulled"} onClick={() => console.log(data)} style={{ backgroundColor: data.darkMuted }}>
+            <div className={data.darkMuted? "main-found ": "main-color-pulled"} onClick={() => console.log(defaults.itemTypes)} style={{ backgroundColor: data.darkMuted }}>
           </div>
             <div className="secondary-color-pulled">
               <div className={data.muted ? "found-color" : "other-colors"} style={{ backgroundColor: data.muted }}></div>
@@ -124,18 +143,41 @@ const CreateItemForm = ({ user }) => {
             />
           </label>
           <label className="add-item-itemType">
-            <select>
-              <option value="hi">Item Type</option>
+            <select
+              name="item-type"
+              onChange={(e) => setItemType(e.target.value)}>
+              <option>Item Type</option>
+              {!!defaults.itemTypes &&
+                defaults.itemTypes.map((type) => {
+                  return <option key={`${type[0]}-${type[1]}`} value={type[0]}>{type[1]}</option>
+                })
+              }
             </select>
           </label>
           <label className="add-item-fit">
-            <select>
-              <option value="hi">Fit</option>
+            <select
+              name="fit-type"
+              onChange={(e) => setFit(e.target.value)}
+            >
+              <option>Fit</option>
+              {!!defaults.fits &&
+                defaults.fits.map((type) => {
+                  return <option key={`${type[0]}-${type[1]}`} value={type[0]}>{type[1]}</option>
+                })
+              }
             </select>
           </label>
           <label className="add-item-occasion">
-            <select>
-              <option value="hi">Occasion</option>
+            <select
+              name="occasion-type"
+              onChange={(e) => setOccasion(e.target.value)}
+            >
+              <option>Occasion</option>
+              {!!defaults.occasions &&
+                defaults.occasions.map((type) => {
+                  return <option key={`${type[0]}-${type[1]}`} value={type[0]}>{type[1]}</option>
+                })
+              }
             </select>
           </label>
           <label className="add-item-description">
