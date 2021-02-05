@@ -165,3 +165,12 @@
 .image-upload img{
   height: 100%;
 }
+
+.pic-instructions{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 35px 15px;
+  text-align: center;
+}

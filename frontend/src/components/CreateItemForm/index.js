@@ -52,8 +52,10 @@ const CreateItemForm = ({ user }) => {
     <div className="content">
       <form className="add-item" onSubmit={handleSubmit}>
         <div className="image-upload">
-          {baseImage &&
+          {baseImage ?
             <img src={baseImage} alt="something" />
+            :
+            <div className="pic-instructions">{"Please upload a picture with a white background to accurately pull colors."}</div>
           }
         </div>
         <div className="top-right">
@@ -62,15 +64,15 @@ const CreateItemForm = ({ user }) => {
               <input type="file" onChange={updateFile} />
           </label>
           <div className="color-block">
-            <div className="main-color-pulled" onClick={() => console.log(data)} style={{ backgroundColor: data.vibrant }}>
+            <div className="main-color-pulled" onClick={() => console.log(data)} style={{ backgroundColor: data.darkMuted }}>
           </div>
             <div className="secondary-color-pulled">
-              <div className="other-color-2 " style={{backgroundColor:"yellow"}}></div>
-              <div className="other-color-3 " style={{backgroundColor:"purple"}}></div>
-              <div className="other-color-4 " style={{backgroundColor:"blue"}}></div>
-              <div className="other-color-5 " style={{backgroundColor:"#1a1d4e"}}></div>
-              <div className="other-color-6 " style={{backgroundColor:color}}></div>
-              <div className="other-color-7 " style={{backgroundColor:"pink"}}></div>
+              <div className="other-color-2 " style={{backgroundColor:data.muted}}></div>
+              <div className="other-color-3 " style={{backgroundColor:data.vibrant}}></div>
+              <div className="other-color-4 " style={{backgroundColor:data.lightMuted}}></div>
+              <div className="other-color-5 " style={{backgroundColor:data.darkVibrant}}></div>
+              <div className="other-color-6 " style={{backgroundColor:data.lightVibrant}}></div>
+              {/* <div className="other-color-7 " style={{backgroundColor:"black"}}></div> */}
             </div>
           </div>
           <label className="main-color-select">
