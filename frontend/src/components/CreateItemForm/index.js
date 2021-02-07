@@ -1,4 +1,4 @@
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import "./CreateItemForm.css";
@@ -7,6 +7,7 @@ import {grabFixedFields, createItem} from "../../store/items";
 
 const CreateItemForm = ({ user }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const defaults = useSelector(state => state.items)
 
   const [image, setImage] = useState("");
@@ -73,7 +74,8 @@ const CreateItemForm = ({ user }) => {
       "userId": user.id,
       "occasionId": occasion,
     }
-    return dispatch(createItem(item))
+ dispatch(createItem(item))
+      .then(() => history.push("/items"))
       .catch(res => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
         console.log(res.data)

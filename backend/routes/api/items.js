@@ -59,22 +59,23 @@ router.post("/create",
     const { title, description, primaryColor, secondaryColor, itemTypeId, fitId, userId, occasionId } = req.body;
     const imgUrl =  await singlePublicFileUpload(req.file);
 
-    console.log(imgUrl)
-    // const item = await ClothingItem.addItem({
-    //   title,
-    //   description,
-    //   imgUrl,
-    //   primaryColor,
-    //   secondaryColor,
-    //   itemTypeId,
-    //   fitId,
-    //   userId,
-    //   occasionId
-    // });
+    // console.log(imgUrl)
+    const item = await ClothingItem.create({
+      title,
+      description,
+      imgUrl,
+      primaryColor,
+      secondaryColor,
+      itemTypeId,
+      fitId,
+      userId,
+      occasionId
+    });
 
     // setTokenCookie(res, item);
 
-    // return res.json({ item });
+    console.log("ADD ITEM SUCCESSFUL!!!!!!!!!!!!!!!")
+    return res.json({ item });
   })
 )
 
