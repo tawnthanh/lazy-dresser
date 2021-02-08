@@ -80,7 +80,7 @@ function SignupFormPage() {
           <div className="signup-errors">
           {errors.map((error, idx) =>{
             if (idx % 2) return <li key={idx}>{error}</li>;
-            else return error;
+            else return " ";
           })}
           </div>
         </form>

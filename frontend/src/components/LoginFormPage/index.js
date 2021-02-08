@@ -3,7 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect, useHistory } from "react-router-dom";
 import './LoginForm.css';
-import polkaDots from "../../imgs/purple-polka-dots.jpeg"
+import openCloset from "../../imgs/open-closet.png";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ function LoginFormPage() {
   return (
     <div className="content signup-login">
       <div className="login-container">
-        <img src={polkaDots} alt="polka-dots"/>
+        <img src={openCloset} alt="open-closet"/>
       </div>
       <h1 className="main-title">
        {title}
