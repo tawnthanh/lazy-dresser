@@ -107,3 +107,8 @@ textarea{
   border: 1px solid #1a1d4e;
   border-radius: 4px;
 }
+
+.full-sidebar{
+  z-index: 275;
+
+}
