@@ -8,6 +8,7 @@ import CreateItemForm from "./components/CreateItemForm";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import ItemList from "./components/ItemList";
+import EditItem from "./components/EditItem";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route path="/items" exact={true}>
             <ItemList user={user}/>
+          </Route>
+          <Route path="/item/:itemId/edit" exact={true}>
+            <EditItem user={user}/>
           </Route>
         </Switch>
       )}

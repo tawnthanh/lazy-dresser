@@ -3,7 +3,7 @@ const { check } = require('express-validator');
 const asyncHandler = require('express-async-handler');
 
 const { handleValidationErrors } = require('../../utils/validation');
-const { setTokenCookie } = require('../../utils/auth');
+// const { setTokenCookie } = require('../../utils/auth');
 const { ClothingItem, ItemType, Occasion, Fit } = require('../../db/models');
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
@@ -90,6 +90,7 @@ router.get("/:userId/item-inventory", asyncHandler(async (req, res) => {
   return res.json({ "inventory": items })
 }));
 
+// Delete item
 router.delete("/:itemId/delete", asyncHandler(async (req, res) => {
   const itemId = req.params.itemId;
   const { userId } = req.body;
@@ -104,16 +105,16 @@ router.delete("/:itemId/delete", asyncHandler(async (req, res) => {
   });
 
   return res.json({ inventory });
-}))
+}));
 
-router.get("/:itemId/delete", asyncHandler(async (req, res) => {
+// Get Single Item
+router.get("/:itemId", asyncHandler(async (req, res) => {
   const itemId = req.params.itemId;
+  const item = await ClothingItem.findByPk(itemId);
 
-
-  const clothingItem = await ClothingItem.findByPk(6);
-  console.log(clothingItem);
-  return res.json({ clothingItem });
+  return res.json({item})
 }))
+
 
 
 module.exports = router;
