@@ -1,0 +1,30 @@
+.update-item,
+.update-item label,
+.update-item input,
+.content.item-list button{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 2px;
+}
+
+.update-item button{
+  margin-top: 10px;
+}
+
+.update-item input{
+  border: 1px solid #1a1d4e;
+  border-radius: 4px;
+}
+
+.color-block{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.color-block div{
+  box-sizing: border-box;
+  padding: 0px 19px;
+}

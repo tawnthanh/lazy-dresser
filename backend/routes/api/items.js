@@ -110,7 +110,7 @@ router.delete("/:itemId/delete", asyncHandler(async (req, res) => {
 // Get Single Item
 router.get("/:itemId", asyncHandler(async (req, res) => {
   const itemId = req.params.itemId;
-  const item = await ClothingItem.findByPk(itemId);
+  const item = await ClothingItem.findByPk(itemId, {include: [Fit, Occasion]});
 
   return res.json({item})
 }))

@@ -27,6 +27,7 @@ const CreateItemForm = ({ user }) => {
     dispatch(grabFixedFields());
   }, [dispatch])
 
+
   const updateFile = async (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -62,12 +63,12 @@ const CreateItemForm = ({ user }) => {
       "userId": user.id,
       "occasionId": occasion,
     }
-    return dispatch(createItem(item))
-      .then(res => history.push("/items"))
+    dispatch(createItem(item))
         .catch(res => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
           console.log(res.data)
         });
+    if(!errors.length) history.push("/items")
   }
 
   return (

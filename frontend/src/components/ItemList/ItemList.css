@@ -2,13 +2,6 @@
   text-align: left;
 }
 
-.item-list{
-  overflow-y: scroll;
-  display: flex;
-  justify-content: flex-start;
-  padding-top: 40px;
-}
-
 .list{
   display: flex;
   overflow-x: auto;

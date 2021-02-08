@@ -39,10 +39,11 @@ body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   box-sizing: border-box;
-  padding: 25px 80px;
+  padding: 40px 80px 25px 80px;
+  overflow-y: auto;
 }
 
 .login-signup-title{

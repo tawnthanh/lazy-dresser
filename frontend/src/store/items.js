@@ -79,9 +79,10 @@ export const deleteSingleItem = (item) => async (dispatch) => {
   return res;
 };
 
-export const getSingleItem = (item) => async (dispatch) => {
-  const res = await fetch(`/api/items/${item.id}`)
-  dispatch(singleItem(res.data));
+export const getSingleItem = (itemId) => async (dispatch) => {
+  const res = await fetch(`/api/items/${itemId}`)
+  const fixed = await fetch("/api/items/fixed-fields");
+  dispatch(singleItem({...res.data,...fixed.data}));
   return res;
 };
 

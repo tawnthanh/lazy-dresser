@@ -85,6 +85,7 @@ const ItemList = ({ user }) => {
               </div>
           )
         }
+        return " "
       })}
       </div>
     </div>
@@ -124,6 +125,7 @@ const ItemList = ({ user }) => {
             </div>
           )
         }
+          return " "
       })}
         </div>
       </div>
@@ -163,6 +165,8 @@ const ItemList = ({ user }) => {
             </div>
           )
         }
+        return " "
+
         })}
         </div>
       </div>
@@ -202,6 +206,7 @@ const ItemList = ({ user }) => {
             </div>
           )
         }
+        return " "
       })}
         </div>
       </div>
@@ -241,6 +246,7 @@ const ItemList = ({ user }) => {
             </div>
           )
         }
+        return " "
       })}
         </div>
       </div>
@@ -280,7 +286,7 @@ const ItemList = ({ user }) => {
             </div>
             )
           }
-
+          return " "
           })}
         </div>
       </div>
