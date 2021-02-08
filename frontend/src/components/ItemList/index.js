@@ -213,41 +213,41 @@ const ItemList = ({ user }) => {
       <div className={"bottom-list"}>
         <h3 className="header">Bottoms</h3>
         <div className="list">
-        {!!inventory && inventory.map(item => {
-          if (item.itemTypeId === 5) {
-            return(
-              <div className="item-container">
-                <img src={item.imgUrl} alt={item.title}
-                  className="item"
-                  onClick={openBottomDetails} />
-                {bottomDetail &&
-                  <div className="inv-item-details">
-                    <div title="Click for details">
-                      <b>Title:</b> {item.title}
-                      <br></br>
-                      <b>Color:</b> {`${item.primaryColor}, ${item.secondaryColor}`}
-                      <br></br>
-                      <b>Fit:</b> {item.Fit.type}
-                      <br></br>
-                      <b>Occasion:</b> {item.Occasion.type}
-                      <br></br>
-                      <b>Description:</b> {item.description ? item.description : "none"}
-                    </div>
-                    <div className="footer">
-                      <a href={`/item/${item.id}/edit`} title="Edit Item">
-                        <i className="fas fa-cog fa-md"></i>
-                      </a>
-                      <div className="item-delete" onClick={()=>deleteItem(item)}>
-                        <i className="fas fa-trash-alt fa-md"></i>
+          {!!inventory && inventory.map(item => {
+            if (item.itemTypeId === 5) {
+              return(
+                <div className="item-container">
+                  <img src={item.imgUrl} alt={item.title}
+                    className="item"
+                    onClick={openBottomDetails} />
+                  {bottomDetail &&
+                    <div className="inv-item-details">
+                      <div title="Click for details">
+                        <b>Title:</b> {item.title}
+                        <br></br>
+                        <b>Color:</b> {`${item.primaryColor}, ${item.secondaryColor}`}
+                        <br></br>
+                        <b>Fit:</b> {item.Fit.type}
+                        <br></br>
+                        <b>Occasion:</b> {item.Occasion.type}
+                        <br></br>
+                        <b>Description:</b> {item.description ? item.description : "none"}
+                      </div>
+                      <div className="footer">
+                        <a href={`/item/${item.id}/edit`} title="Edit Item">
+                          <i className="fas fa-cog fa-md"></i>
+                        </a>
+                        <div className="item-delete" onClick={()=>deleteItem(item)}>
+                          <i className="fas fa-trash-alt fa-md"></i>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                }
-              </div>
-            )
-          }
-          return " "
-        })}
+                  }
+                </div>
+              )
+            }
+            return " "
+          })}
         </div>
       </div>
       <div className={"shoe-list"}>

@@ -1,0 +1,63 @@
+.create-outfit-inventory .header{
+  margin: 0;
+}
+
+.create-outfit-inventory{
+  margin-top: 13px;
+  border-bottom: 1px solid black;
+}
+
+.outfit-divider{
+  border-bottom: 1px solid black;
+  font-size: 24px;
+}
+
+.outfit-chosen{
+  width: 100%;
+  display: flex;
+  margin-top: 15px;
+}
+
+.chosen-outerwear,
+.chosen-dress{
+  width: 33.33%;
+  height: 250px;
+  background-color: purple;
+  box-sizing: border-box;
+  margin: 5px;
+}
+
+
+.chosen-sweater,
+.chosen-top,
+.chosen-bottom,
+.chosen-shoes{
+  height: 25%;
+  box-sizing: border-box;
+  /* margin: 5px; */
+  border: 1px solid purple;
+  white-space: wrap;
+}
+
+.mid-section{
+  width: 33.33%;
+  height: 250px;
+  border: 1px solid yellow;
+  margin: 5px 0px;
+
+}
+
+.new-outfit-form label{
+  padding: 0px;
+}
+
+.new-outfit-form button{
+  width: auto;
+}
+
+.add-item-title.outfit input{
+  box-sizing: border-box;
+  margin: 10px 0px;
+}
+
+
