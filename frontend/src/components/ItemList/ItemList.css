@@ -12,6 +12,7 @@
   width: 100px;
   border: 1px solid  #1a1d4e;
   margin-right: 15px;
+  object-fit: contain;
 }
 
 .inv-item-details{

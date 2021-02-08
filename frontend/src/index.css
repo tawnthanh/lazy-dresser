@@ -46,6 +46,17 @@ body {
   overflow-y: auto;
 }
 
+.white-block{
+  height: 56px;
+  width: 800px;
+  background-color: white;
+  position: fixed;
+  z-index: 200;
+  left: 76px;
+  top: 9px;
+
+}
+
 .login-signup-title{
   box-sizing: border-box;
   position: absolute;

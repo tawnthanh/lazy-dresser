@@ -28,6 +28,7 @@ const CreateOutfitForm = ({ user }) => {
 
   return (
     <div className="content create-outfit-form">
+      <div className="white-block"></div>
       <div className="create-outfit-inventory">
         <div>
           <h3 className="header" onClick={() => setOuterwear(!outerwear)}>Outerwear</h3>
