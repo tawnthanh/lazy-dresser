@@ -9,6 +9,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import ItemList from "./components/ItemList";
 import EditItem from "./components/EditItem";
+import CreateOutfitForm from "./components/CreateOutfitForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,9 +36,6 @@ function App() {
           <Route path="/" exact={true}>
             <ProfilePage />
           </Route>
-          <Route path="/edit-profile" exact={true}>
-            <ProfilePage />
-          </Route>
           <Route path="/item/create" exact={true}>
             <CreateItemForm user={user}/>
           </Route>
@@ -46,6 +44,9 @@ function App() {
           </Route>
           <Route path="/item/:itemId/edit" exact={true}>
             <EditItem user={user}/>
+          </Route>
+          <Route path="/outfit/create" exact={true}>
+            <CreateOutfitForm user={user} />
           </Route>
         </Switch>
       )}
