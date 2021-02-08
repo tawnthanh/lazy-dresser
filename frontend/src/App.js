@@ -7,6 +7,7 @@ import ProfilePage from "./components/ProfilePage";
 import CreateItemForm from "./components/CreateItemForm";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import ItemList from "./components/ItemList";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route path="/item/create" exact={true}>
             <CreateItemForm user={user}/>
+          </Route>
+          <Route path="/items" exact={true}>
+            <ItemList user={user}/>
           </Route>
         </Switch>
       )}

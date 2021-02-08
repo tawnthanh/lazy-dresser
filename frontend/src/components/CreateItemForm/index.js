@@ -49,18 +49,6 @@ const CreateItemForm = ({ user }) => {
     })
   };
 
-  const resetItems = () => {
-    setImage("");
-    setBaseImage("");
-    setMainColorState("");
-    setSecondColorState("");
-    setTitle("");
-    setItemType(0);
-    setFit(0);
-    setOccasion(0);
-    setDescription("")
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     let item = {
@@ -74,13 +62,14 @@ const CreateItemForm = ({ user }) => {
       "userId": user.id,
       "occasionId": occasion,
     }
- dispatch(createItem(item))
-      .then(() => history.push("/items"))
-      .catch(res => {
-        if (res.data && res.data.errors) setErrors(res.data.errors);
-        console.log(res.data)
-      });
+    return dispatch(createItem(item))
+      .then(res => history.push("/items"))
+        .catch(res => {
+          if (res.data && res.data.errors) setErrors(res.data.errors);
+          console.log(res.data)
+        });
   }
+
   return (
     <div className="content">
       <form className="add-item" onSubmit={handleSubmit}>
@@ -113,7 +102,7 @@ const CreateItemForm = ({ user }) => {
               onChange={(e) => setMainColorState(e.target.value)}
               style={{ backgroundColor: mainColorState, width: "100%" }}
             >
-              <option value="">Main Color</option>
+              <option value={0}>Main Color</option>
               {data && Object.values(data).map((pulledColor, idx) => {
                 return <option value={pulledColor} key={pulledColor + "-" + idx} style={{ backgroundColor: pulledColor, width: "100%" }}>
                   {pulledColor}
@@ -127,7 +116,7 @@ const CreateItemForm = ({ user }) => {
               onChange={(e) => setSecondColorState(e.target.value)}
               style={{ backgroundColor: secondColorState, width: "100%" }}
             >
-              <option value="">Secondary Color</option>
+              <option value={0}>Secondary Color</option>
               {data && Object.values(data).map((pulledColor, idx) => {
                 return <option value={pulledColor} key={pulledColor + "-" + idx} style={{ backgroundColor: pulledColor, width: "100%" }}>
                   {pulledColor}
@@ -150,7 +139,7 @@ const CreateItemForm = ({ user }) => {
             <select
               name="item-type"
               onChange={(e) => setItemType(e.target.value)}>
-              <option>Item Type</option>
+              <option value={0}>Item Type</option>
               {!!defaults.itemTypes &&
                 defaults.itemTypes.map((type) => {
                   return <option key={`${type[0]}-${type[1]}`} value={type[0]}>{type[1]}</option>
@@ -163,7 +152,7 @@ const CreateItemForm = ({ user }) => {
               name="fit-type"
               onChange={(e) => setFit(e.target.value)}
             >
-              <option>Fit</option>
+              <option value={0}>Fit</option>
               {!!defaults.fits &&
                 defaults.fits.map((type) => {
                   return <option key={`${type[0]}-${type[1]}`} value={type[0]}>{type[1]}</option>
@@ -176,7 +165,7 @@ const CreateItemForm = ({ user }) => {
               name="occasion-type"
               onChange={(e) => setOccasion(e.target.value)}
             >
-              <option>Occasion</option>
+              <option value={0}>Occasion</option>
               {!!defaults.occasions &&
                 defaults.occasions.map((type) => {
                   return <option key={`${type[0]}-${type[1]}`} value={type[0]}>{type[1]}</option>
@@ -191,19 +180,20 @@ const CreateItemForm = ({ user }) => {
               onChange={(e)=>setDescription(e.target.value)}
             />
           </label>
-          <ul className="add-item-errors">
+          <button className="create-item-button" type="submit">Create Item</button>
+
+        </div>
+      </form>
+      <button className="create-item-button reset">
+        <a href="/item/create">Reset</a>
+      </button>
+      <ul className="add-item-errors">
           {!!errors &&
               errors.map((err, idx) => {
                 return <li key={`err-${idx}`}>{err}</li>
               })
             }
-          </ul>
-          <button className="create-item-button" type="submit">Create Item</button>
-          <button className="create-item-button" onClick={resetItems}>Reset</button>
-
-        </div>
-      </form>
-
+      </ul>
     </div>
   );
 };

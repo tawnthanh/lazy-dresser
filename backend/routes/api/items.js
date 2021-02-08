@@ -55,9 +55,9 @@ router.get("/fixed-fields", asyncHandler(async (req, res) => {
 router.post("/create",
   singleMulterUpload("image"),
   validateItemUpload,
-  asyncHandler( async (req, res) => {
+  asyncHandler(async (req, res) => {
     const { title, description, primaryColor, secondaryColor, itemTypeId, fitId, userId, occasionId } = req.body;
-    const imgUrl =  await singlePublicFileUpload(req.file);
+    const imgUrl = await singlePublicFileUpload(req.file);
 
     // console.log(imgUrl)
     const item = await ClothingItem.create({
@@ -77,6 +77,43 @@ router.post("/create",
     console.log("ADD ITEM SUCCESSFUL!!!!!!!!!!!!!!!")
     return res.json({ item });
   })
-)
+);
+
+// Inventory List of Items
+router.get("/:userId/item-inventory", asyncHandler(async (req, res) => {
+  const userId = req.params.userId;
+  const items = await ClothingItem.findAll({
+    where: { "userId": userId },
+    order: [["itemTypeId", "ASC"]],
+    include: [Fit, ItemType, Occasion]
+  })
+  return res.json({ "inventory": items })
+}));
+
+router.delete("/:itemId/delete", asyncHandler(async (req, res) => {
+  const itemId = req.params.itemId;
+  const { userId } = req.body;
+
+  const clothingItem = await ClothingItem.findByPk(itemId);
+  await clothingItem.destroy();
+
+  const inventory = await ClothingItem.findAll({
+    where: { "userId": userId },
+    order: [["itemTypeId", "ASC"]],
+    include: [Fit, ItemType, Occasion]
+  });
+
+  return res.json({ inventory });
+}))
+
+router.get("/:itemId/delete", asyncHandler(async (req, res) => {
+  const itemId = req.params.itemId;
+
+
+  const clothingItem = await ClothingItem.findByPk(6);
+  console.log(clothingItem);
+  return res.json({ clothingItem });
+}))
+
 
 module.exports = router;

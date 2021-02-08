@@ -2,6 +2,8 @@ import { fetch } from "./csrf";
 
 const GRAB_FIXED = "items/GRAB_FIXED";
 const ADD_ITEM = "items/ADD_ITEM";
+const GET_ITEMS_LIST = "items/GET_ITEMS_LIST";
+const DELETE_ITEM = "items/DELETE_ITEM";
 
 const setFixedItems = (payload) => ({
   type: GRAB_FIXED,
@@ -13,11 +15,21 @@ const addItem = (payload) => ({
   payload
 });
 
+const getItemsList = (payload) => ({
+  type: GET_ITEMS_LIST,
+  payload
+});
+
+const deleteItem = (payload) => ({
+  type: DELETE_ITEM,
+  payload
+})
+
 export const grabFixedFields = () => async (dispatch) => {
   const res = await fetch("/api/items/fixed-fields");
   dispatch(setFixedItems(res.data));
   return res;
-}
+};
 
 export const createItem = (item) => async (dispatch) => {
   const { title, description, image, primaryColor, secondaryColor, itemTypeId, fitId, userId, occasionId } = item;
@@ -44,7 +56,22 @@ export const createItem = (item) => async (dispatch) => {
 
   dispatch(addItem(data.item));
   return item;
-}
+};
+
+export const getAllItems = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/items/${userId}/item-inventory`);
+  dispatch(getItemsList(res.data));
+  return res;
+};
+
+export const deleteSingleItem = (item) => async (dispatch) => {
+  const res = await fetch(`/api/items/${item.id}/delete`, {
+    method: 'DELETE',
+    body: JSON.stringify(item)
+  })
+  dispatch(deleteItem(res.data));
+  return res;
+};
 function reducer(state={}, action) {
   let newState;
   switch (action.type) {
@@ -54,6 +81,12 @@ function reducer(state={}, action) {
     case ADD_ITEM:
       newState = { "added": { ...action.payload } };
       return newState;
+    case GET_ITEMS_LIST:
+      newState = { ...action.payload };
+      return newState;
+    case DELETE_ITEM:
+      newState = { ...action.payload };
+      return newState
     default:
       return state;
   }

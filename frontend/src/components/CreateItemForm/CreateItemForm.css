@@ -194,6 +194,11 @@
   padding-left: 100px;
   margin: 0;
   position: absolute;
-  top: 505px;
-  left: 250px;
+  top: 515px;
+  /* right: -300px; */
+  left: 50px;
+}
+
+.create-item-button.reset a{
+  color: white;
 }

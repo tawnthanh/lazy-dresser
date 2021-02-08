@@ -35,6 +35,7 @@ body {
 .content{
   text-align: center;
   width: 100%;
+  height: auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
