@@ -52,9 +52,9 @@ body {
   background-color: white;
   position: fixed;
   z-index: 200;
-  left: 76px;
-  top: 9px;
 
+  display: flex;
+  justify-content: center;
 }
 
 .login-signup-title{

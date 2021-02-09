@@ -22,6 +22,7 @@ function App() {
 
   return (
     <>
+      <div className="white-block"></div>
       { user &&
       <Navigation isLoaded={isLoaded} />
       }

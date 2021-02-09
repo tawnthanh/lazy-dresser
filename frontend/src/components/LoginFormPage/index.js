@@ -13,13 +13,12 @@ function LoginFormPage() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password }))
-      .then(res => history.push("/"))
+    .then(res => history.push("/"))
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(["Sorry, invalid credentials.\nTry again"]);
       });
@@ -32,9 +31,11 @@ function LoginFormPage() {
         (res) => {
           if (res.data && res.data.errors) setErrors(["Sorry, invalid credentials.\nTry again"]);
         })
-  }
+      }
 
-  let title = "LAzY\nDrEsSeR"
+  let title = "LAzY\nDrEsSeR";
+  
+  if (sessionUser) return <Redirect to="/" />;
   return (
     <div className="content signup-login">
       <div className="login-container">

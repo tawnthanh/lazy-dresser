@@ -49,7 +49,6 @@ const ItemList = ({ user }) => {
 
   return (
     <div className="content item-list">
-      <div className="white-block"></div>
       <div className={"outerwear-list"}>
         <h3 className="header">Outerwear</h3>
         <div className="list">

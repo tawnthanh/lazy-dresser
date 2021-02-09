@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ShoesDisplay = ({ inventory }) => {
+const ShoesDisplay = ({ inventory, handleShoes }) => {
   const [shoeDetail, setShoeDetail] = useState(false);
 
 
@@ -14,10 +14,11 @@ const ShoesDisplay = ({ inventory }) => {
       {!!inventory && inventory.map(item => {
         if (item.itemTypeId === 6) {
             return(
-              <div className="item-container">
+              <div key={item.title} className="item-container">
               <img src={item.imgUrl} alt={item.title}
                 className="item"
-                onClick={openShoeDetails} />
+                  onClick={openShoeDetails} />
+              <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => handleShoes(item)}></i>
               {shoeDetail &&
                 <div className="inv-item-details">
                   <div title="Click for details">

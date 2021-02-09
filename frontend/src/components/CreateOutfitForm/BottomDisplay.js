@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BottomDisplay = ({ inventory }) => {
+const BottomDisplay = ({ inventory, handleBottom }) => {
   const [bottomDetail, setBottomDetail] = useState(false);
 
   const openBottomDetails = () => {
@@ -13,10 +13,12 @@ const BottomDisplay = ({ inventory }) => {
         {!!inventory && inventory.map(item => {
           if (item.itemTypeId === 5) {
             return(
-              <div className="item-container">
+              <div key={item.title} className="item-container">
                 <img src={item.imgUrl} alt={item.title}
                   className="item"
                   onClick={openBottomDetails} />
+                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => handleBottom(item)}></i>
+
                 {bottomDetail &&
                   <div className="inv-item-details">
                     <div title="Click for details">

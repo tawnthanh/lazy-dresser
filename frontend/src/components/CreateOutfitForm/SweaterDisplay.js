@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SweaterDisplay = ({ inventory }) => {
+const SweaterDisplay = ({ inventory, handleSweater }) => {
   const [sweaterDetail, setSweaterDetail] = useState(false);
 
   const openSweaterDetails = () => {
@@ -13,10 +13,11 @@ const SweaterDisplay = ({ inventory }) => {
           {!!inventory && inventory.map(item => {
             if (item.itemTypeId === 2) {
               return(
-                <div className="item-container">
+                <div key={item.title} className="item-container">
                   <img src={item.imgUrl} alt={item.title}
                     className="item"
                     onClick={openSweaterDetails} />
+                  <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => handleSweater(item)}></i>
                   {sweaterDetail &&
                     <div className="inv-item-details">
                       <div title="Click for details">

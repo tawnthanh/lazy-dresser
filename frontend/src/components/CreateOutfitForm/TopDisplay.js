@@ -1,22 +1,23 @@
 import { useState } from "react";
 
-const TopDisplay = ({ inventory }) => {
+const TopDisplay = ({ inventory, handleTop }) => {
   const [topDetail, setTopDetail] = useState(false);
 
   const openTopDetails = () => {
     if (topDetail) setTopDetail(!topDetail);
     setTopDetail(!topDetail);
   };
-  
+
   return (
       <div className="list">
         {!!inventory && inventory.map(item => {
           if (item.itemTypeId === 4) {
             return(
-              <div className="item-container">
+              <div key={item.title} className="item-container">
                 <img src={item.imgUrl} alt={item.title}
                   className="item"
                   onClick={openTopDetails} />
+                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => handleTop(item)}></i>
                 {topDetail &&
                   <div className="inv-item-details">
                     <div title="Click for details">
