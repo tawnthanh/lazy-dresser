@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BottomDisplay = ({ inventory, handleBottom }) => {
+const BottomDisplay = ({ inventory, setBottomPic }) => {
   const [bottomDetail, setBottomDetail] = useState(false);
 
   const openBottomDetails = () => {
@@ -17,7 +17,7 @@ const BottomDisplay = ({ inventory, handleBottom }) => {
                 <img src={item.imgUrl} alt={item.title}
                   className="item"
                   onClick={openBottomDetails} />
-                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => handleBottom(item)}></i>
+                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setBottomPic(item)}></i>
 
                 {bottomDetail &&
                   <div className="inv-item-details">

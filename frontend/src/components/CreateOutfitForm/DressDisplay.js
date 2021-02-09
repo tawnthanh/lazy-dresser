@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const DressDisplay = ({ inventory, handleDress }) => {
+const DressDisplay = ({ inventory, setDressPic }) => {
   const [dressDetail, setDressDetail] = useState(false);
 
   const openDressDetails = () => {
@@ -17,7 +17,7 @@ const DressDisplay = ({ inventory, handleDress }) => {
                 <img src={item.imgUrl} alt={item.title}
                   className="item"
                   onClick={openDressDetails} />
-                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => handleDress(item)}></i>
+                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setDressPic(item)}></i>
                 {dressDetail &&
                   <div className="inv-item-details">
                     <div title="Click for details">

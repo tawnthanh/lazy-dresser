@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TopDisplay = ({ inventory, handleTop }) => {
+const TopDisplay = ({ inventory, setTopPic }) => {
   const [topDetail, setTopDetail] = useState(false);
 
   const openTopDetails = () => {
@@ -17,7 +17,7 @@ const TopDisplay = ({ inventory, handleTop }) => {
                 <img src={item.imgUrl} alt={item.title}
                   className="item"
                   onClick={openTopDetails} />
-                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => handleTop(item)}></i>
+                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setTopPic(item)}></i>
                 {topDetail &&
                   <div className="inv-item-details">
                     <div title="Click for details">

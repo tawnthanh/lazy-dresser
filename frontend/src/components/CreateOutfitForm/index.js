@@ -46,6 +46,7 @@ const CreateOutfitForm = ({ user }) => {
       "bottom": bottomPic,
       "sweater": sweaterPic,
       "shoes": shoesPic,
+      "userId": user.id,
       title,
       description
     }
@@ -54,7 +55,7 @@ const CreateOutfitForm = ({ user }) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
         console.log(res.data)
       });
-    // if(!errors.length) history.push("/outfits")
+    if(!errors.length) history.push("/outfits")
   }
 
   return (
@@ -62,38 +63,38 @@ const CreateOutfitForm = ({ user }) => {
       <div className="create-outfit-inventory">
         <div>
           <h3 className="header" onClick={() => setOuterwear(!outerwear)}>Outerwear</h3>
-          { outerwear &&
-            <OuterwearDisplay inventory={inventory} handleOuterwear={(item) =>setOuterwearPic(item)}/>
+          { !!outerwear &&
+            <OuterwearDisplay inventory={inventory} setOuterwearPic={setOuterwearPic}/>
             }
         </div>
         <div>
           <h3 className="header" onClick={() => setSweater(!sweater)}>Sweaters/Sweatshirts</h3>
-          {sweater &&
-            <SweaterDisplay inventory={inventory} handleSweater={(item) =>setSweaterPic(item)}/>
+          { !!sweater &&
+            <SweaterDisplay inventory={inventory} setSweaterPic={setSweaterPic}/>
           }
         </div>
         <div>
           <h3 className="header" onClick={() => setTop(!top)}>Tops</h3>
-          {top &&
-            <TopDisplay inventory={inventory} handleTop={(item) =>setTopPic(item)} />
+          { !!top &&
+            <TopDisplay inventory={inventory} setTopPic={setTopPic} />
           }
         </div>
         <div>
         <h3 className="header" onClick={() => setDress(!dress)}>Dresses</h3>
-          {dress &&
-            <DressDisplay inventory={inventory} handleDress={(item) => setDressPic(item)}/>
+          { !!dress &&
+            <DressDisplay inventory={inventory} setDressPic={setDressPic}/>
           }
         </div>
         <div>
           <h3 className="header" onClick={() => setBottom(!bottom)}>Bottoms</h3>
-          {bottom &&
-            <BottomDisplay inventory={inventory} handleBottom={(item) => setBottomPic(item)}/>
+          { !!bottom &&
+            <BottomDisplay inventory={inventory} setBottomPic={setBottomPic}/>
           }
         </div>
         <div>
           <h3 className="header" onClick={() => setShoes(!shoes)}>Shoes</h3>
-          {shoes &&
-            <ShoesDisplay inventory={inventory} handleShoes={(item) => setShoesPic(item)} />
+          { !!shoes &&
+            <ShoesDisplay inventory={inventory} setShoesPic={setShoesPic} />
           }
         </div>
       </div>

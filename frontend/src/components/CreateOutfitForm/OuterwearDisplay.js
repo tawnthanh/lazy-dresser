@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const OuterwearDisplay = ({ inventory, handleOuterwear }) => {
+const OuterwearDisplay = ({ inventory, setOuterwearPic }) => {
   const [outerwearDetail, setOuterwearDetail] = useState(false);
 
   const openOuterwearDetail = () => {
@@ -18,7 +18,7 @@ const OuterwearDisplay = ({ inventory, handleOuterwear }) => {
                   key={item.title}
                   className="item"
                   onClick={openOuterwearDetail} />
-                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => handleOuterwear(item)}></i>
+                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setOuterwearPic(item)}></i>
                 {outerwearDetail &&
                   <div className="inv-item-details">
                     <div title="Click for details">

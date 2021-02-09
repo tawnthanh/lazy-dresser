@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SweaterDisplay = ({ inventory, handleSweater }) => {
+const SweaterDisplay = ({ inventory, setSweaterPic }) => {
   const [sweaterDetail, setSweaterDetail] = useState(false);
 
   const openSweaterDetails = () => {
@@ -17,7 +17,7 @@ const SweaterDisplay = ({ inventory, handleSweater }) => {
                   <img src={item.imgUrl} alt={item.title}
                     className="item"
                     onClick={openSweaterDetails} />
-                  <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => handleSweater(item)}></i>
+                  <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setSweaterPic(item)}></i>
                   {sweaterDetail &&
                     <div className="inv-item-details">
                       <div title="Click for details">
