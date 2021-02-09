@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { getAllItems } from "../../store/items";
 import OuterwearDisplay from "./OuterwearDisplay";
 import SweaterDisplay from "./SweaterDisplay";
@@ -7,10 +8,12 @@ import TopDisplay from "./TopDisplay";
 import BottomDisplay from "./BottomDisplay";
 import DressDisplay from "./DressDisplay";
 import ShoesDisplay from "./ShoesDisplay";
+import { createOutfit } from "../../store/outfit";
 import "./CreateOutfitForm.css";
 
 const CreateOutfitForm = ({ user }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const inventory = useSelector(state => state.items.inventory)
 
   const [outerwear, setOuterwear] = useState(false);
@@ -21,21 +24,38 @@ const CreateOutfitForm = ({ user }) => {
   const [shoes, setShoes] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [outerwearPic, setOuterwearPic] = useState("")
-  const [sweaterPic, setSweaterPic] = useState("");
-  const [topPic, setTopPic] = useState("");
-  const [dressPic, setDressPic] = useState("");
-  const [bottomPic, setBottomPic] = useState("");
-  const [shoesPic, setShoesPic] = useState("");
+  const [outerwearPic, setOuterwearPic] = useState({})
+  const [sweaterPic, setSweaterPic] = useState({});
+  const [topPic, setTopPic] = useState({});
+  const [dressPic, setDressPic] = useState({});
+  const [bottomPic, setBottomPic] = useState({});
+  const [shoesPic, setShoesPic] = useState({});
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     dispatch(getAllItems(user.id));
   }, [dispatch, user])
 
 
-  const handleShoes = (item) => {
-    setShoesPic(item.imgUrl);
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const outfit = {
+      "outerwear": outerwearPic,
+      "dress": dressPic,
+      "top": topPic,
+      "bottom": bottomPic,
+      "sweater": sweaterPic,
+      "shoes": shoesPic,
+      title,
+      description
+    }
+    dispatch(createOutfit(outfit))
+      .catch(res => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+        console.log(res.data)
+      });
+    // if(!errors.length) history.push("/outfits")
+  }
 
   return (
     <div className="content create-outfit-form">
@@ -43,85 +63,86 @@ const CreateOutfitForm = ({ user }) => {
         <div>
           <h3 className="header" onClick={() => setOuterwear(!outerwear)}>Outerwear</h3>
           { outerwear &&
-            <OuterwearDisplay inventory={inventory} handleOuterwear={(item) =>setOuterwearPic(item.imgUrl)}/>
+            <OuterwearDisplay inventory={inventory} handleOuterwear={(item) =>setOuterwearPic(item)}/>
             }
         </div>
         <div>
           <h3 className="header" onClick={() => setSweater(!sweater)}>Sweaters/Sweatshirts</h3>
           {sweater &&
-            <SweaterDisplay inventory={inventory} handleSweater={(item) =>setSweaterPic(item.imgUrl)}/>
+            <SweaterDisplay inventory={inventory} handleSweater={(item) =>setSweaterPic(item)}/>
           }
         </div>
         <div>
           <h3 className="header" onClick={() => setTop(!top)}>Tops</h3>
           {top &&
-            <TopDisplay inventory={inventory} handleTop={(item) =>setTopPic(item.imgUrl)} />
+            <TopDisplay inventory={inventory} handleTop={(item) =>setTopPic(item)} />
           }
         </div>
         <div>
         <h3 className="header" onClick={() => setDress(!dress)}>Dresses</h3>
           {dress &&
-            <DressDisplay inventory={inventory} handleDress={(item) => setDressPic(item.imgUrl)}/>
+            <DressDisplay inventory={inventory} handleDress={(item) => setDressPic(item)}/>
           }
         </div>
         <div>
           <h3 className="header" onClick={() => setBottom(!bottom)}>Bottoms</h3>
           {bottom &&
-            <BottomDisplay inventory={inventory} handleBottom={(item) => setBottomPic(item.imgUrl)}/>
+            <BottomDisplay inventory={inventory} handleBottom={(item) => setBottomPic(item)}/>
           }
         </div>
         <div>
           <h3 className="header" onClick={() => setShoes(!shoes)}>Shoes</h3>
           {shoes &&
-            <ShoesDisplay inventory={inventory} handleShoes={(item) => setShoesPic(item.imgUrl)} />
+            <ShoesDisplay inventory={inventory} handleShoes={(item) => setShoesPic(item)} />
           }
         </div>
       </div>
       <div className="outfit-divider">Outfit</div>
       <div className="outfit-chosen">
-        {outerwearPic &&
+        { outerwearPic.imgUrl &&
           <div className="chosen-outerwear">
-            <img src={outerwearPic} alt="outerwear" />
-            <i className="fas fa-minus-square fa-lg" onClick={()=>setOuterwearPic("")}></i>
+            <img src={outerwearPic.imgUrl} alt="outerwear" />
+            <i className="fas fa-minus-square fa-lg" onClick={()=>setOuterwearPic({})}></i>
           </div>
         }
-        {dressPic &&
+        {dressPic.imgUrl &&
           <div className="chosen-dress">
-            <img src={dressPic} alt="dress" />
-            <i className="fas fa-minus-square fa-lg" onClick={()=>setDressPic("")}></i>
+            <img src={dressPic.imgUrl} alt="dress" />
+            <i className="fas fa-minus-square fa-lg" onClick={()=>setDressPic({})}></i>
           </div>
         }
-        {sweaterPic &&
+        {sweaterPic.imgUrl &&
           <div className="chosen-sweater">
-            <img src={sweaterPic} alt="sweater" />
-            <i className="fas fa-minus-square fa-lg" onClick={()=>setSweaterPic("")}></i>
+            <img src={sweaterPic.imgUrl} alt="sweater" />
+            <i className="fas fa-minus-square fa-lg" onClick={()=>setSweaterPic({})}></i>
           </div>
         }
-        {topPic &&
+        {topPic.imgUrl &&
           <div className="chosen-top">
-            <img src={topPic} alt="top" />
-            <i className="fas fa-minus-square fa-lg" onClick={()=>setTopPic("")}></i>
+            <img src={topPic.imgUrl} alt="top" />
+            <i className="fas fa-minus-square fa-lg" onClick={()=>setTopPic({})}></i>
           </div>
         }
-        {bottomPic &&
+        {bottomPic.imgUrl &&
           <div className="chosen-bottom">
-            <img src={bottomPic} alt="bottom" />
-            <i className="fas fa-minus-square fa-lg" onClick={()=>setBottomPic("")}></i>
+            <img src={bottomPic.imgUrl} alt="bottom" />
+            <i className="fas fa-minus-square fa-lg" onClick={()=>setBottomPic({})}></i>
           </div>
         }
-        {shoesPic &&
+        {shoesPic.imgUrl &&
           <div className="chosen-shoes">
-            <img src={shoesPic} alt="shoes" />
+            <img src={shoesPic.imgUrl} alt="shoes" />
             <i className="fas fa-minus-square fa-lg" onClick={()=>setShoesPic("")}></i>
           </div>
         }
 
       </div>
-      <form className="new-outfit-form">
+      <form className="new-outfit-form" onSubmit={handleSubmit}>
         <label className="add-item-title outfit">
           <input
             type="text"
             value={title}
+            required={true}
             placeholder="Title"
             onChange={(e) => setTitle(e.target.value)} />
         </label>
@@ -131,6 +152,11 @@ const CreateOutfitForm = ({ user }) => {
             placeholder="Details about this outfit (optional)"
             onChange={e => setDescription(e.target.value)} />
         </label>
+        {errors &&
+          errors.map((err, idx) => (
+            <p key={idx}>{err}</p>
+          ))
+        }
         <button className="create-item-button" type="submit">Create Outfit</button>
       </form>
     </div>
