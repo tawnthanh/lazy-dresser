@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation";
 import ItemList from "./components/ItemList";
 import EditItem from "./components/EditItem";
 import CreateOutfitForm from "./components/CreateOutfitForm";
+import OutfitList from "./components/OutfitList";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <Route path="/outfit/create" exact={true}>
             <CreateOutfitForm user={user} />
+          </Route>
+          <Route path="/outfits" exact={true}>
+            <OutfitList user={user} />
           </Route>
         </Switch>
       )}
