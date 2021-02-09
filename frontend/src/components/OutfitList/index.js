@@ -15,9 +15,10 @@ const OutfitList = ({ user }) => {
   return (
     <div className="content outfit-inventory">
       <h1 onClick={()=>console.log(outfits)}>Outfits</h1>
-      { !!outfits &&
-        <SingleOutfit outfits={outfits} />
-      }
+      { !!outfits && Object.values(outfits).map(outfit => (
+        <SingleOutfit outfit={outfit} />
+      ))}
+
     </div>
   )
 };

@@ -1,13 +1,26 @@
 import { useState } from "react";
 import "./SingleOutfit.css";
+import { useDispatch } from "react-redux";
 
-const SingleOutfit = ({ outfits }) => {
+const SingleOutfit = ({ outfit }) => {
+  const dispatch = useDispatch();
   const [details, setDetails] = useState(false);
+  const [areYouSure, setAreYouSure] = useState(false);
 
+  const deleteSingleOutfit = () => {
+    dispatch(deleteOutfit(outfit))
+  }
   return (
     <>
-      { Object.values(outfits).map(outfit => (
         <div key={outfit.id} className="outfit-list">
+          <i className="fas fa-minus-square fa-lg" onClick={() => setAreYouSure(!areYouSure)}></i>
+          { areYouSure &&
+            <div className="clarification">
+              Delete outfit?
+              <button onClick={deleteSingleOutfit}>Yes</button>
+              <button onClick={()=>setAreYouSure(false)}>No</button>
+            </div>
+          }
           <h3>{outfit.title}</h3>
           {outfit.description ? <p>{outfit.description}</p> : ""}
           <div className="list">
@@ -35,8 +48,6 @@ const SingleOutfit = ({ outfits }) => {
             ))}
           </div>
         </div>
-
-      ))}
     </>
   )
 }

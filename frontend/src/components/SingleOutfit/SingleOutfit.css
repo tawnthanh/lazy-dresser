@@ -4,8 +4,22 @@
   margin: 2px 0;
   padding: 10px 20px;
   border-radius: 4px;
+  position: relative;
 }
 
 .outfit-list h3{
   margin: 0 0 10px 0;
+}
+
+.clarification{
+  position: absolute;
+  background-color: #1a1d4e;
+  width: 120px;
+  top: 25px;
+  right: 6px;
+  color: white;
+  box-sizing: border-box;
+  padding: 5px;
+  z-index: 250;
+  border-radius: 4px;
 }
