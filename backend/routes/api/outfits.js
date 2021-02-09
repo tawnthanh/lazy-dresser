@@ -1,7 +1,7 @@
 const express = require('express');
 const { check } = require('express-validator');
 const asyncHandler = require('express-async-handler');
-const { Outfit, OutfitList, ClothingItem } = require('../../db/models');
+const { Outfit, OutfitList, ClothingItem, Fit, Occasion, ItemType } = require('../../db/models');
 
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -51,7 +51,10 @@ router.get("/:userId", asyncHandler(async (req, res) => {
   console.log(userId)
   let outfits = await Outfit.findAll({
     where: {"userId": userId},
-    include: [ClothingItem]
+    include: {
+      model: ClothingItem,
+      include: [Fit, Occasion, ItemType]
+    }
   });
 
   return res.json(outfits)

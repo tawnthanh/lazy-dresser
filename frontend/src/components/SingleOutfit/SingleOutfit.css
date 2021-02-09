@@ -1,0 +1,11 @@
+.outfit-list{
+  border: 1px solid #1a1d4e;
+  box-sizing: border-box;
+  margin: 2px 0;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.outfit-list h3{
+  margin: 0 0 10px 0;
+}
