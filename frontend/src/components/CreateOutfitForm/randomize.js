@@ -1,11 +1,10 @@
 const complimentaryColors = require("complementary-colors");
 
-const color = new complimentaryColors("#8c8376");
+const color = new complimentaryColors("#8d8477");
 
-console.log(color.primary());
-console.log(color.complementary());
-console.log(color.triad());
-console.log(color.analogous());
+// console.log(color.complementary());
+// console.log(color.triad());
+// console.log("analogous", color.analogous());
 
 // function convertToRGB(hexcode) {
 //   if (hexcode.length !== 7) return null;
@@ -25,5 +24,26 @@ console.log(color.analogous());
 // }
 
 function rgbToHex(rgb) {
-  return `#${rgb[0].toString(16)}${rgb[1].toString(16)}${rgb[2].toString(16)}`
+  return `#${parseInt(rgb[0]).toString(16)}${parseInt(rgb[1]).toString(16)}${parseInt(rgb[2]).toString(16)}`
+}
+
+function findAnalogous(hex) {
+  const color = new complimentaryColors(hex);
+
+  let analogous = color.analogous()[2];
+  analogous = Object.values(analogous).join(",")
+  // console.log("from find anal", analogous)
+  return `rgb(${analogous})`
+}
+export const calculateColors = (hex) => {
+  const color = new complimentaryColors(hex);
+
+  let comp = color.complementary()
+  comp = Object.values(comp[1]).join(",")
+
+  console.log(comp.split(","))
+  let analogous = findAnalogous(rgbToHex(comp.split(",")))
+
+  console.log("calculate func", analogous)
+  return [`rgb(${comp})`, analogous];
 }

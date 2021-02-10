@@ -1,0 +1,15 @@
+.randomize-page{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.randomize-page div{
+  width: 200px;
+  height: 200px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
