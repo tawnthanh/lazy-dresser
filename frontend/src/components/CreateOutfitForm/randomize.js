@@ -30,20 +30,21 @@ function rgbToHex(rgb) {
 function findAnalogous(hex) {
   const color = new complimentaryColors(hex);
 
-  let analogous = color.analogous()[2];
+  console.log("from find anal", color.analogous())
+  let analogous = color.analogous()[0];
   analogous = Object.values(analogous).join(",")
-  // console.log("from find anal", analogous)
-  return `rgb(${analogous})`
-}
+  return analogous
+};
+
 export const calculateColors = (hex) => {
   const color = new complimentaryColors(hex);
 
   let comp = color.complementary()
   comp = Object.values(comp[1]).join(",")
 
-  console.log(comp.split(","))
   let analogous = findAnalogous(rgbToHex(comp.split(",")))
 
-  console.log("calculate func", analogous)
-  return [`rgb(${comp})`, analogous];
+  let secondAnalogous = findAnalogous(rgbToHex(analogous.split(",")));
+
+  return [`rgb(${comp})`, `rgb(${analogous})`, `rgb(${secondAnalogous})`];
 }
