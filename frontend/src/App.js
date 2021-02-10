@@ -11,6 +11,7 @@ import ItemList from "./components/ItemList";
 import EditItem from "./components/EditItem";
 import CreateOutfitForm from "./components/CreateOutfitForm";
 import OutfitList from "./components/OutfitList";
+import Randomize from "./components/Randomize";
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,9 @@ function App() {
           </Route>
           <Route path="/outfits" exact={true}>
             <OutfitList user={user} />
+          </Route>
+          <Route path="/randomize" exact={true}>
+            <Randomize />
           </Route>
         </Switch>
       )}
