@@ -71,19 +71,44 @@ export const randomOutfit = (inventory, ...cb) => {
 
   let topList = ["sweater", "top"];
 
-  if (item.itemTypeId === 1 ) {
-    //conditional to match outerwear
+  if (item.itemTypeId === 1) {
+    // conditional to match outerwear
     cb[0](item);
     cb[4](bottom[randomNum(bottom)]);
     cb[5](shoes[randomNum(shoes)]);
-    console.log(topList[randomNum(topList)])
     if (topList[randomNum(topList)] === "sweater") {
-      console.log("found a sweater")
       cb[1](sweater[randomNum(sweater)]);
     } else if (topList[randomNum(topList)] === "top") {
-      console.log("found a top")
       cb[2](top[randomNum(top)]);
     }
+  } else if (item.itemTypeId === 2) {
+    // conditional to match sweater
+    cb[1](item);
+    cb[0](outerwear[randomNum(outerwear)])
+    cb[4](bottom[randomNum(bottom)]);
+    cb[5](shoes[randomNum(shoes)]);
+  } else if (item.itemTypeId === 3) {
+    // conditional to match dress
+
+  } else if (item.itemTypeId === 4) {
+    // conditional to match top
+    cb[2](item);
+    cb[0](outerwear[randomNum(outerwear)])
+    cb[4](bottom[randomNum(bottom)]);
+    cb[5](shoes[randomNum(shoes)]);
+  } else if (item.itemTypeId === 5) {
+    // conditional to match bottoms
+    cb[4](item);
+    cb[0](outerwear[randomNum(outerwear)]);
+    cb[5](shoes[randomNum(shoes)]);
+    if (topList[randomNum(topList)] === "sweater") {
+      cb[1](sweater[randomNum(sweater)]);
+    } else if (topList[randomNum(topList)] === "top") {
+      cb[2](top[randomNum(top)]);
+    }
+  } else if (item.itemTypeId === 6) {
+    cb[5](item)
+    
   }
   // cb[1](item)
 }
