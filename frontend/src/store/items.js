@@ -59,7 +59,7 @@ export const createItem = (item) => async (dispatch) => {
   });
 
   dispatch(addItem(res.data));
-  return item;
+  return res.data;
 };
 
 export const getAllItems = (userId) => async (dispatch) => {

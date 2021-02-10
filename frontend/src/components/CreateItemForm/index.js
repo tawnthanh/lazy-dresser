@@ -87,7 +87,7 @@ const CreateItemForm = ({ user }) => {
               <input type="file" onChange={updateFile} />
           </label>
           <div className="color-block">
-            <div className={data.darkMuted? "main-found ": "main-color-pulled"} onClick={() => console.log(defaults.itemTypes)} style={{ backgroundColor: data.darkMuted }}>
+            <div className={data.darkMuted? "main-found ": "main-color-pulled"} style={{ backgroundColor: data.darkMuted }}>
           </div>
             <div className="secondary-color-pulled">
               <div className={data.muted ? "found-color" : "other-colors"} style={{ backgroundColor: data.muted }}></div>

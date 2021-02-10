@@ -23,7 +23,6 @@ router.post("/create", validateOutfitUpload, asyncHandler(async (req, res) => {
 
   let outfit = await Outfit.create({ userId, title, description })
   outfit = outfit.toJSON();
-  console.log(outfit);
   if (outerwear.id) OutfitList.create({ "outfitId": outfit.id, "clothingItemId": outerwear.id });
   if (dress.id) OutfitList.create({ "outfitId": outfit.id, "clothingItemId": dress.id });
   if (top.id) OutfitList.create({ "outfitId": outfit.id, "clothingItemId": top.id });

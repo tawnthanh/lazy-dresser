@@ -39,7 +39,6 @@ const CreateOutfitForm = ({ user }) => {
 
   useEffect(() => {
     if (inventory !== {}) setIsLoaded(true);
-    console.log("heey");
   }, [inventory])
 
   const handleSubmit = (e) => {

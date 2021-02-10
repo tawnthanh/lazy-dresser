@@ -14,7 +14,6 @@ const OutfitList = ({ user }) => {
   }, [dispatch, user]);
 
   useEffect(() => {
-    console.log(Object.keys(outfits).length, Object.keys(outfits))
     if (Object.keys(outfits)[0] !== "outfit") setIsLoaded(true);
   }, [outfits]);
 
