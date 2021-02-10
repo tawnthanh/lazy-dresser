@@ -48,9 +48,8 @@ router.post("/create", validateOutfitUpload, asyncHandler(async (req, res) => {
 router.get("/:userId", asyncHandler(async (req, res) => {
   let userId = req.params.userId;
   userId = parseInt(userId);
-  console.log(userId)
   let outfits = await Outfit.findAll({
-    where: {"userId": userId},
+    where: { "userId": userId },
     include: {
       model: ClothingItem,
       include: [Fit, Occasion, ItemType]
@@ -58,5 +57,23 @@ router.get("/:userId", asyncHandler(async (req, res) => {
   });
 
   return res.json(outfits)
+}));
+
+router.delete("/:outfitId/delete", asyncHandler(async (req, res) => {
+  let outfitId = req.params.outfitId;
+  outfitId = parseInt(outfitId);
+
+  const items = await OutfitList.findAll({ where: { "outfitId": outfitId } });
+
+  items.map(async (item) => {
+    item = item.toJSON()
+    await OutfitList.destroy({ where: { "outfitId": item.outfitId } })
+  });
+
+  await Outfit.destroy({where: {"id": outfitId}})
+  return res.json({"deleted":items})
+
 }))
+
+
 module.exports = router;

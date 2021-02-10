@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./SingleOutfit.css";
 import { useDispatch } from "react-redux";
+import { deleteOutfit } from "../../store/outfit";
 
 const SingleOutfit = ({ outfit }) => {
   const dispatch = useDispatch();
@@ -8,7 +9,8 @@ const SingleOutfit = ({ outfit }) => {
   const [areYouSure, setAreYouSure] = useState(false);
 
   const deleteSingleOutfit = () => {
-    dispatch(deleteOutfit(outfit))
+    dispatch(deleteOutfit(outfit));
+    
   }
   return (
     <>
