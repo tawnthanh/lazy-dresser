@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { getSingleItem , deleteSingleItem } from "../../store/items";
+import { getSingleItem, deleteSingleItem } from "../../store/items";
+import { updateItem } from "../../store/items";
 import "./EditItem.css";
 
 const ItemList = ({ user }) => {
@@ -28,13 +29,31 @@ const ItemList = ({ user }) => {
       updateDescription(items.item.description);
       setIsLoaded(true);
     }
-  }, [items])
+  }, [items]);
+
+  useEffect(() => {
+    console.log(occasion);
+  }, [occasion])
 
   const deleteItem = (item) => {
     dispatch(deleteSingleItem(item));
     history.push("/items")
   }
 
+  const updateSingleItem = (e) => {
+    e.preventDefault();
+    let item = {
+      "id": items.item.id,
+      title,
+      "fitId": parseInt(fit),
+      "occasionId": parseInt(occasion),
+      description
+    };
+
+    console.log(item)
+    return dispatch(updateItem(item))
+            .then(res => history.push("/items"))
+  }
   return (
     <div className="content">
       { isLoaded &&
@@ -46,7 +65,7 @@ const ItemList = ({ user }) => {
             <div style={{ backgroundColor: items.item.primaryColor }}>{items.item.primaryColor}</div>
             <div style={{ backgroundColor: items.item.secondaryColor }}>{items.item.secondaryColor}</div>
         </div>
-        <form className="update-item">
+        <form className="update-item" onSubmit={updateSingleItem}>
           <input type="text"
             value={title}
             required={true}
@@ -67,11 +86,17 @@ const ItemList = ({ user }) => {
             Occasion Update
              <select name="occasion-type" onChange={(e) => updateOccasion(e.target.value)}>
               <option value={occasion}>{items.item.Occasion.type}</option>
+              {!!items.occasions &&
+                items.occasions.map((type) => {
+                  return <option key={`${type[0]}-${type[1]}`} value={type[0]}>{type[1]}</option>
+                })
+              }
              </select>
           </label>
           <label>Description</label>
           <textarea
-            placeholder={description}
+            value={description}
+            placeholder="Details about the item. (optional)"
             onChange={e => updateDescription(e.target.value)}
           />
           <button className="create-item-button" type="submit">Update</button>

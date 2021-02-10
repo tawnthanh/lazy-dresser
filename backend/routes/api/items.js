@@ -109,10 +109,21 @@ router.delete("/:itemId/delete", asyncHandler(async (req, res) => {
 // Get Single Item
 router.get("/:itemId", asyncHandler(async (req, res) => {
   const itemId = req.params.itemId;
-  const item = await ClothingItem.findByPk(itemId, {include: [Fit, Occasion]});
+  const item = await ClothingItem.findByPk(itemId, { include: [Fit, Occasion] });
 
-  return res.json({item})
-}))
+  return res.json({ item })
+}));
+
+// Update Item
+router.put("/:itemId/edit", asyncHandler(async (req, res) => {
+  let itemId = req.params.itemId;
+  itemId = parseInt(itemId);
+  const { description, fitId, occasionId, title } = req.body;
+
+  let item = await ClothingItem.findByPk(itemId, { include: [Fit, Occasion] });
+  await item.update({ "description": description, fitId: fitId, occasionId: occasionId, title: title });
+  return res.json({ item });
+}));
 
 
 

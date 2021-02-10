@@ -5,6 +5,7 @@ const ADD_ITEM = "items/ADD_ITEM";
 const GET_ITEMS_LIST = "items/GET_ITEMS_LIST";
 const DELETE_ITEM = "items/DELETE_ITEM";
 const GET_SINGLE_ITEM = "items/GET_SINGLE_ITEM";
+const UPDATE_ITEM = "item/UPDATE_ITEM";
 
 const setFixedItems = (payload) => ({
   type: GRAB_FIXED,
@@ -28,6 +29,11 @@ const deleteItem = (payload) => ({
 
 const singleItem = (payload) => ({
   type: GET_SINGLE_ITEM,
+  payload
+});
+
+const updatedItem = (payload) => ({
+  type: UPDATE_ITEM,
   payload
 })
 
@@ -84,6 +90,16 @@ export const getSingleItem = (itemId) => async (dispatch) => {
   return res;
 };
 
+export const updateItem = (item) => async (dispatch) => {
+  const res = await fetch(`/api/items/${item.id}/edit`, {
+    method: "PUT",
+    body: JSON.stringify(item)
+  });
+  const fixed = await fetch("/api/items/fixed-fields");
+  dispatch(updatedItem({...res.data,...fixed.data}));
+  return res;
+}
+
 function reducer(state={}, action) {
   let newState;
   switch (action.type) {
@@ -100,6 +116,9 @@ function reducer(state={}, action) {
       newState = { ...action.payload };
       return newState;
     case GET_SINGLE_ITEM:
+      newState = { ...action.payload };
+      return newState;
+    case UPDATE_ITEM:
       newState = { ...action.payload };
       return newState;
     default:
