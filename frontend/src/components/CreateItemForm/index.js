@@ -63,16 +63,16 @@ const CreateItemForm = ({ user }) => {
       "userId": user.id,
       "occasionId": occasion,
     }
-    dispatch(createItem(item))
-        .catch(res => {
-          if (res.data && res.data.errors) setErrors(res.data.errors);
-          console.log(res.data)
-        });
-    if(!errors.length) history.push("/items")
+    return dispatch(createItem(item))
+            .then((res) => history.push("/items"))
+            .catch(res => {
+              if (res.data && res.data.errors) setErrors(res.data.errors);
+            });
+
   }
 
   return (
-    <div className="content">
+    <div className="content create-item-container">
       <form className="add-item" onSubmit={handleSubmit}>
         <div className="image-upload">
           {baseImage ?

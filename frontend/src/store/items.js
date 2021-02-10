@@ -58,9 +58,7 @@ export const createItem = (item) => async (dispatch) => {
     body: formData,
   });
 
-  const data = await res.json();
-
-  dispatch(addItem(data.item));
+  dispatch(addItem(res.data));
   return item;
 };
 

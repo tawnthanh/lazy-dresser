@@ -202,3 +202,7 @@
 .create-item-button.reset a{
   color: white;
 }
+
+.create-item-container{
+  padding: 80px 80px 25px 80px;
+}

@@ -11,16 +11,21 @@ const OutfitList = ({ user }) => {
 
   useEffect(() => {
     dispatch(getAllOutfits(user.id));
-    setIsLoaded(true);
   }, [dispatch, user]);
+
+  useEffect(() => {
+    console.log(Object.keys(outfits).length, Object.keys(outfits))
+    if (Object.keys(outfits)[0] !== "outfit") setIsLoaded(true);
+  }, [outfits]);
+
 
   return (
     <>
       { isLoaded &&
         <div className="content outfit-inventory">
-          <h1 onClick={()=>console.log(outfits)}>Outfits</h1>
+          <h1>Outfits</h1>
           { !!outfits && Object.values(outfits).map(outfit => (
-            <SingleOutfit outfit={outfit} />
+            <SingleOutfit key={outfit.id} outfit={outfit} />
           ))}
 
         </div>

@@ -41,7 +41,7 @@ export const deleteOutfit = (outfit) => async (dispatch) => {
     body: JSON.stringify(outfit)
   });
   const currentList = await fetch(`/api/outfits/${outfit.userId}`);
-
+  console.log(res.data);
   dispatch(deletedOutfitList(currentList.data));
 
 }

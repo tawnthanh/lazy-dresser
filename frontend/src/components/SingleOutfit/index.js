@@ -10,7 +10,7 @@ const SingleOutfit = ({ outfit }) => {
 
   const deleteSingleOutfit = () => {
     dispatch(deleteOutfit(outfit));
-    
+
   }
   return (
     <>
@@ -27,7 +27,7 @@ const SingleOutfit = ({ outfit }) => {
           {outfit.description ? <p>{outfit.description}</p> : ""}
           <div className="list">
             {outfit.ClothingItems.map(item => (
-              <div className="item-container">
+              <div key={item.id} className="item-container">
                 <img src={item.imgUrl} alt={item.title}
                   className="item"
                   onClick={()=>setDetails(!details)} />

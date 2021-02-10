@@ -75,7 +75,7 @@ router.post("/create",
     // setTokenCookie(res, item);
 
     console.log("ADD ITEM SUCCESSFUL!!!!!!!!!!!!!!!")
-    return res.json({ item });
+    return res.json(item);
   })
 );
 
