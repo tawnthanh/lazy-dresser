@@ -30,21 +30,60 @@ function rgbToHex(rgb) {
 function findAnalogous(hex) {
   const color = new complimentaryColors(hex);
 
-  console.log("from find anal", color.analogous())
   let analogous = color.analogous()[0];
-  analogous = Object.values(analogous).join(",")
-  return analogous
+  analogous = Object.values(analogous).join(",");
+  return analogous;
 };
 
 export const calculateColors = (hex) => {
   const color = new complimentaryColors(hex);
 
-  let comp = color.complementary()
-  comp = Object.values(comp[1]).join(",")
+  let comp = color.complementary();
+  comp = Object.values(comp[1]).join(",");
 
-  let analogous = findAnalogous(rgbToHex(comp.split(",")))
+  let analogous = findAnalogous(rgbToHex(comp.split(",")));
 
   let secondAnalogous = findAnalogous(rgbToHex(analogous.split(",")));
 
   return [`rgb(${comp})`, `rgb(${analogous})`, `rgb(${secondAnalogous})`];
+}
+
+function randomNum(array) {
+  return Math.floor(Math.random() * Math.floor(array.length));
+};
+
+export const randomOutfit = (inventory, ...cb) => {
+  cb[0]({});
+  cb[1]({});
+  cb[2]({});
+  cb[3]({});
+  cb[4]({});
+  cb[5]({});
+  let randomItem = randomNum(inventory);
+  let item = inventory[randomItem];
+
+  let outerwear = inventory.filter(piece => parseInt(piece.itemTypeId) === 1);
+  let sweater = inventory.filter(piece => parseInt(piece.itemTypeId) === 2);
+  let dress = inventory.filter(piece => parseInt(piece.itemTypeId) === 3);
+  let top = inventory.filter(piece => parseInt(piece.itemTypeId) === 4);
+  let bottom = inventory.filter(piece => parseInt(piece.itemTypeId) === 5);
+  let shoes = inventory.filter(piece => parseInt(piece.itemTypeId) === 6);
+
+  let topList = ["sweater", "top"];
+
+  if (item.itemTypeId === 1 ) {
+    //conditional to match outerwear
+    cb[0](item);
+    cb[4](bottom[randomNum(bottom)]);
+    cb[5](shoes[randomNum(shoes)]);
+    console.log(topList[randomNum(topList)])
+    if (topList[randomNum(topList)] === "sweater") {
+      console.log("found a sweater")
+      cb[1](sweater[randomNum(sweater)]);
+    } else if (topList[randomNum(topList)] === "top") {
+      console.log("found a top")
+      cb[2](top[randomNum(top)]);
+    }
+  }
+  // cb[1](item)
 }

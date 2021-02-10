@@ -10,6 +10,7 @@ import DressDisplay from "./DressDisplay";
 import ShoesDisplay from "./ShoesDisplay";
 import { createOutfit } from "../../store/outfit";
 import "./CreateOutfitForm.css";
+import { randomOutfit } from "./randomize";
 
 const CreateOutfitForm = ({ user }) => {
   const dispatch = useDispatch();
@@ -149,7 +150,7 @@ const CreateOutfitForm = ({ user }) => {
               <input
                 type="text"
                 value={title}
-                required={true}
+                // required={true}
                 placeholder="Title"
                 onChange={(e) => setTitle(e.target.value)} />
             </label>
@@ -166,6 +167,7 @@ const CreateOutfitForm = ({ user }) => {
             }
             <button className="create-item-button" type="submit">Create Outfit</button>
           </form>
+          <button className="create-item-button random-button" onClick={()=>randomOutfit(inventory, setOuterwearPic, setSweaterPic, setTopPic, setDressPic, setBottomPic, setShoesPic )}>Random Outfit</button>
         </div>
       }
     </>
