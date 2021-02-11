@@ -99,6 +99,17 @@ export const randomOutfit = (inventory, ...cb) => {
   } else if (item.itemTypeId === 3) {
     // conditional to match dress
     console.log("dress")
+    let outfitInclude = ["sweater", "outerwear", "none"];
+
+    cb[3](item);
+    cb[5](shoes[randomNum(shoes)]);
+    if (outfitInclude[randomNum(outfitInclude)] === "sweater") {
+      cb[1](sweater[randomNum(sweater)]);
+    } else if (outfitInclude[randomNum(outfitInclude)] === "outerwear") {
+      cb[0](outerwear[randomNum(outerwear)]);
+    } else if (outfitInclude[randomNum(outfitInclude)] === "none") {
+      return;
+    };
 
   } else if (item.itemTypeId === 4) {
     // conditional to match top
