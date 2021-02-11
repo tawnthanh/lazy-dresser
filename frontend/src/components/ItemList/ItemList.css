@@ -15,6 +15,10 @@
   object-fit: contain;
 }
 
+.item-container {
+  margin-bottom: 5px;
+
+}
 .inv-item-details{
   text-align: left;
   font-size: 12px;

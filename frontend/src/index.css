@@ -110,5 +110,12 @@ textarea{
 
 .full-sidebar{
   z-index: 275;
+}
 
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1d4e;
 }
