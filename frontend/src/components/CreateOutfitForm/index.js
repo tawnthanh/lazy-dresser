@@ -149,7 +149,7 @@ const CreateOutfitForm = ({ user }) => {
               <input
                 type="text"
                 value={title}
-                required={true}
+                // required={true}
                 placeholder="Title"
                 onChange={(e) => setTitle(e.target.value)} />
             </label>
@@ -161,7 +161,7 @@ const CreateOutfitForm = ({ user }) => {
             </label>
             {errors &&
               errors.map((err, idx) => (
-                <p key={idx}>{err}</p>
+                <p className="outfit-errors"key={idx}>{err}</p>
               ))
             }
             <button className="create-item-button" type="submit">Create Outfit</button>

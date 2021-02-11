@@ -59,6 +59,7 @@
 
 .new-outfit-form button{
   width: auto;
+  margin-top: 5px;
 }
 
 .add-item-title.outfit input{
@@ -80,4 +81,16 @@
   top: 6px;
   right: 6px;
   color: #1a1d4e;
+}
+
+.outfit-errors{
+  font-size: 14px;
+  color: red;
+  padding: 0;
+  margin: 0;
+
+}
+
+.outfit-errors::before{
+  content: "* "
 }
