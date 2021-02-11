@@ -167,7 +167,10 @@ const CreateOutfitForm = ({ user }) => {
             }
             <button className="create-item-button" type="submit">Create Outfit</button>
           </form>
-          <button className="create-item-button random-button" onClick={()=>randomOutfit(inventory, setOuterwearPic, setSweaterPic, setTopPic, setDressPic, setBottomPic, setShoesPic )}>Random Outfit</button>
+        <button className="create-item-button random-button"
+          onClick={() => randomOutfit(inventory, setOuterwearPic, setSweaterPic, setTopPic, setDressPic, setBottomPic, setShoesPic)}>
+          Random Outfit
+        </button>
         </div>
       }
     </>
