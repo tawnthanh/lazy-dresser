@@ -8,7 +8,10 @@
   "bottom bottom";
   font-family: Lora;
   position: relative;
+}
 
+.add-item button{
+  margin-top: 5px;
 }
 
 .image-upload{
@@ -186,17 +189,21 @@
 }
 
 .add-item-errors{
+  align-self: center;
   color: red;
-  font-size: 11px;
-  width: 578px;
-  text-align: left;
+  font-size: 14px;
   box-sizing: border-box;
-  padding-left: 100px;
   margin: 0;
-  position: absolute;
-  top: 515px;
-  /* right: -300px; */
-  left: 50px;
+  width: 250px;
+}
+
+.add-item-errors p{
+  margin: 0;
+  text-align: left;
+  width: auto;
+}
+.add-item-errors p::before{
+  content: "* ";
 }
 
 .create-item-button.reset a{
