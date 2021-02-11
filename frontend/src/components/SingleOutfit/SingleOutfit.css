@@ -8,7 +8,7 @@
 }
 
 .outfit-list h3{
-  margin: 0 0 10px 0;
+  margin: 0 0 5px 0;
 }
 
 .clarification{
@@ -22,4 +22,15 @@
   padding: 5px;
   z-index: 250;
   border-radius: 4px;
+}
+
+.outfit-description{
+  margin: 0 0 5px 0;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.outfit-description::before,
+.outfit-description::after{
+  content: '"';
 }

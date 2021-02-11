@@ -23,8 +23,8 @@ const SingleOutfit = ({ outfit }) => {
               <button onClick={()=>setAreYouSure(false)}>No</button>
             </div>
           }
-          <h3>{outfit.title}</h3>
-          {outfit.description ? <p>{outfit.description}</p> : ""}
+          <h3 className="oufit-title">{outfit.title}</h3>
+          {outfit.description ? <p className="outfit-description">{outfit.description}</p> : ""}
           <div className="list">
             {outfit.ClothingItems.map(item => (
               <div key={item.id} className="item-container">
