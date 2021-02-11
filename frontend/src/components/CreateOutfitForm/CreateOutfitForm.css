@@ -74,6 +74,12 @@
   color: white;
   box-sizing: border-box;
   padding: 2px;
+  left: 0;
+  top: 0;
+}
+
+.item-pic{
+  position: relative;
 }
 
 .fa-minus-square{

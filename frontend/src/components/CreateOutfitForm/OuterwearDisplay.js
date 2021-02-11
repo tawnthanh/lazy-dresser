@@ -14,11 +14,13 @@ const OuterwearDisplay = ({ inventory, setOuterwearPic }) => {
           if (item.itemTypeId === 1) {
             return(
               <div key={item.title} className="item-container">
-                <img src={item.imgUrl} alt={item.title}
-                  key={item.title}
-                  className="item"
-                  onClick={openOuterwearDetail} />
-                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setOuterwearPic(item)}></i>
+                <div className="item-pic">
+                  <img src={item.imgUrl} alt={item.title}
+                    key={item.title}
+                    className="item"
+                    onClick={openOuterwearDetail} />
+                  <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setOuterwearPic(item)}></i>
+                </div>
                 {outerwearDetail &&
                   <div className="inv-item-details">
                     <div title="Click for details">

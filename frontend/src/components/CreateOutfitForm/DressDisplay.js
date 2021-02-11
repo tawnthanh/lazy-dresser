@@ -14,10 +14,12 @@ const DressDisplay = ({ inventory, setDressPic }) => {
           if (item.itemTypeId === 3) {
             return(
               <div key={item.title} className="item-container">
-                <img src={item.imgUrl} alt={item.title}
-                  className="item"
-                  onClick={openDressDetails} />
-                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setDressPic(item)}></i>
+                <div className="item-pic">
+                  <img src={item.imgUrl} alt={item.title}
+                    className="item"
+                    onClick={openDressDetails} />
+                  <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setDressPic(item)}></i>
+                </div>
                 {dressDetail &&
                   <div className="inv-item-details">
                     <div title="Click for details">

@@ -14,10 +14,12 @@ const TopDisplay = ({ inventory, setTopPic }) => {
           if (item.itemTypeId === 4) {
             return(
               <div key={item.title} className="item-container">
-                <img src={item.imgUrl} alt={item.title}
-                  className="item"
-                  onClick={openTopDetails} />
-                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setTopPic(item)}></i>
+                <div className="item-pic">
+                  <img src={item.imgUrl} alt={item.title}
+                    className="item"
+                    onClick={openTopDetails} />
+                  <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setTopPic(item)}></i>
+                </div>
                 {topDetail &&
                   <div className="inv-item-details">
                     <div title="Click for details">
