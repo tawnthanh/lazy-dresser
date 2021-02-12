@@ -4,6 +4,11 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('ClothingItems', [
       // title, description, imgUrl, primaryColor, secondaryColor, itemTypeId, fitId, userId, occasionId
+      {title:"boyfriend jeans", description: "they're alright", imgUrl: "/imgs/b-1.jpg", primaryColor:"#4b639c", secondaryColor: "#a4bcec", itemTypeId: 5, fitId: 2, userId: 1, occasionId: 3},
+      {title:"leather leggings", description: null, imgUrl: "/imgs/b-2.jpg", primaryColor:"#424242", secondaryColor: "#424242", itemTypeId: 5, fitId: 3, userId: 1, occasionId: 2},
+      {title:"skinny jeans", description: "goes with everything", imgUrl: "/imgs/b-3.jpg", primaryColor:"#243755", secondaryColor: "#243755", itemTypeId: 5, fitId: 1, userId: 1, occasionId: 1},
+      {title:"dressy wideleg pants", description: "Idk what to wear with this. Worn once?", imgUrl: "/imgs/b-5.jpg", primaryColor:"#f4c297", secondaryColor: "#f4c297", itemTypeId: 5, fitId: 2, userId: 1, occasionId: 6},
+      {title: "brown plaid skirt", description: "living my dark academia life", imgUrl: "/imgs/b-6.jpg", primaryColor: "#54442c", secondaryColor: "#54442c", itemTypeId: 5, fitId: 1, userId: 1, occasionId: 1 },
       {title:"grey sweatpants",description: "my faveee", imgUrl: "/imgs/b-4.jpg", primaryColor:"#ccc5bc", secondaryColor: "#ccc5bc", itemTypeId: 5, fitId: 1, userId: 1, occasionId: 3},
       {title:"black satin slip dress",description: "I can wear anything with thiss", imgUrl: "/imgs/d-1.jpg", primaryColor:"#3c3c3c", secondaryColor: "#3c3c3c", itemTypeId: 3, fitId: 1, userId: 1, occasionId: 2},
       {title:"blue striped shirt dress",description: "good for work or casual day", imgUrl: "/imgs/d-2.jpg", primaryColor:"#596d9d", secondaryColor: "#596d9d", itemTypeId: 3, fitId: 1, userId: 1, occasionId: 1},
@@ -31,7 +36,7 @@ module.exports = {
       {title:"creme knit sweater",description: "layer friendly" , imgUrl: "/imgs/sw-3.jpg", primaryColor:"#dcccb2", secondaryColor: "#dcccb2", itemTypeId: 2, fitId: 1, userId: 1, occasionId: 1},
       {title:"color block sweatshirt",description: "The colors are so funn" , imgUrl: "/imgs/sw-4.jpg", primaryColor:"#641c22", secondaryColor: "#cca236", itemTypeId: 2, fitId: 2, userId: 1, occasionId: 3},
       {title:"tie-dye madness",description: null , imgUrl: "/imgs/sw-5.jpg", primaryColor:"#04101c", secondaryColor: "#b1b8c4", itemTypeId: 2, fitId: 2, userId: 1, occasionId: 3},
-      {title:"oversized cardigan",description: "grandpa cardi for sure" , imgUrl: "/imgs/sw-6.jpg", primaryColor:"#918474", secondaryColor: "#918474", itemTypeId: 2, fitId: 2, userId: 1, occasionId: 3},
+      {title:"oversized cardigan",description: "grandpa cardi for sure" , imgUrl: "/imgs/sw-6.jpg", primaryColor:"#918474", secondaryColor: "#918474", itemTypeId: 1, fitId: 2, userId: 1, occasionId: 3},
       {title:"blue sweater",description: null , imgUrl: "https://lazydresser.s3.amazonaws.com/1612761582054.jpg", primaryColor:"#344869", secondaryColor: "#344869", itemTypeId: 2, fitId: 2, userId: 1, occasionId: 3},
       {title:"mom jeans", description: "90s vibes", imgUrl: "/imgs/b-7.jpg", primaryColor:"#8caccc", secondaryColor: "#afbfc8", itemTypeId: 5, fitId: 2, userId: 1, occasionId: 3},
     ], {});
@@ -41,5 +46,3 @@ module.exports = {
     return queryInterface.bulkDelete('ClothingItems', null, {});
   }
 };
-
-
