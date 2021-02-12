@@ -14,11 +14,12 @@ const BottomDisplay = ({ inventory, setBottomPic }) => {
           if (item.itemTypeId === 5) {
             return(
               <div key={item.title} className="item-container">
-                <img src={item.imgUrl} alt={item.title}
-                  className="item"
-                  onClick={openBottomDetails} />
-                <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setBottomPic(item)}></i>
-
+                <div className="item-pic">
+                  <img src={item.imgUrl} alt={item.title}
+                    className="item"
+                    onClick={openBottomDetails} />
+                  <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setBottomPic(item)}></i>
+                </div>
                 {bottomDetail &&
                   <div className="inv-item-details">
                     <div title="Click for details">

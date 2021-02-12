@@ -11,6 +11,8 @@ import ShoesDisplay from "./ShoesDisplay";
 import { createOutfit } from "../../store/outfit";
 import "./CreateOutfitForm.css";
 import { randomOutfit } from "./randomize";
+import closeArrow from "../../imgs/close-arrow.png";
+import openArrow from "../../imgs/open-arrow.png";
 
 const CreateOutfitForm = ({ user }) => {
   const dispatch = useDispatch();
@@ -69,37 +71,55 @@ const CreateOutfitForm = ({ user }) => {
         <div className="content create-outfit-form">
           <div className="create-outfit-inventory">
             <div>
-              <h3 className="header" onClick={() => setOuterwear(!outerwear)}>Outerwear</h3>
+              <h3 className="header" onClick={() => setOuterwear(!outerwear)}>
+                Outerwear
+                {outerwear ? <img src={ openArrow } alt="open"/>: <img src={closeArrow} alt="close"/>}
+              </h3>
               {!!outerwear &&
                 <OuterwearDisplay inventory={inventory} setOuterwearPic={setOuterwearPic} />
               }
             </div>
             <div>
-              <h3 className="header" onClick={() => setSweater(!sweater)}>Sweaters/Sweatshirts</h3>
+              <h3 className="header" onClick={() => setSweater(!sweater)}>
+                Sweaters/Sweatshirts
+                {sweater ? <img src={ openArrow } alt="open"/>: <img src={closeArrow} alt="close"/>}
+              </h3>
               {!!sweater &&
                 <SweaterDisplay inventory={inventory} setSweaterPic={setSweaterPic} />
               }
             </div>
             <div>
-              <h3 className="header" onClick={() => setTop(!top)}>Tops</h3>
+              <h3 className="header" onClick={() => setTop(!top)}>
+                Tops
+                {top ? <img src={ openArrow } alt="open"/>: <img src={closeArrow} alt="close"/>}
+              </h3>
               {!!top &&
                 <TopDisplay inventory={inventory} setTopPic={setTopPic} />
               }
             </div>
             <div>
-              <h3 className="header" onClick={() => setDress(!dress)}>Dresses</h3>
+              <h3 className="header" onClick={() => setDress(!dress)}>
+                Dresses
+                {dress ? <img src={ openArrow } alt="open"/>: <img src={closeArrow} alt="close"/>}
+              </h3>
               {!!dress &&
                 <DressDisplay inventory={inventory} setDressPic={setDressPic} />
               }
             </div>
             <div>
-              <h3 className="header" onClick={() => setBottom(!bottom)}>Bottoms</h3>
+              <h3 className="header" onClick={() => setBottom(!bottom)}>
+                Bottoms
+                {bottom ? <img src={ openArrow } alt="open"/>: <img src={closeArrow} alt="close"/>}
+              </h3>
               {!!bottom &&
                 <BottomDisplay inventory={inventory} setBottomPic={setBottomPic} />
               }
             </div>
             <div>
-              <h3 className="header" onClick={() => setShoes(!shoes)}>Shoes</h3>
+              <h3 className="header" onClick={() => setShoes(!shoes)}>
+                Shoes
+                {shoes ? <img src={ openArrow } alt="open"/>: <img src={closeArrow} alt="close"/>}
+              </h3>
               {!!shoes &&
                 <ShoesDisplay inventory={inventory} setShoesPic={setShoesPic} />
               }
@@ -162,7 +182,7 @@ const CreateOutfitForm = ({ user }) => {
             </label>
             {errors &&
               errors.map((err, idx) => (
-                <p key={idx}>{err}</p>
+                <p className="outfit-errors"key={idx}>{err}</p>
               ))
             }
             <button className="create-item-button" type="submit">Create Outfit</button>

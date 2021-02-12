@@ -14,10 +14,12 @@ const SweaterDisplay = ({ inventory, setSweaterPic }) => {
             if (item.itemTypeId === 2) {
               return(
                 <div key={item.title} className="item-container">
-                  <img src={item.imgUrl} alt={item.title}
-                    className="item"
-                    onClick={openSweaterDetails} />
-                  <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setSweaterPic(item)}></i>
+                  <div className="item-pic">
+                    <img src={item.imgUrl} alt={item.title}
+                      className="item"
+                      onClick={openSweaterDetails} />
+                    <i className="add-item-plus-outfit fas fa-plus fa-md" onClick={() => setSweaterPic(item)}></i>
+                  </div>
                   {sweaterDetail &&
                     <div className="inv-item-details">
                       <div title="Click for details">

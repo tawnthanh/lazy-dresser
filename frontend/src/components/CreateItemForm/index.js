@@ -181,6 +181,13 @@ const CreateItemForm = ({ user }) => {
               onChange={(e)=>setDescription(e.target.value)}
             />
           </label>
+          <div className="add-item-errors">
+            {!!errors &&
+              errors.map((err, idx) => {
+                return <p   key={`err-${idx}`}>{err}</p>
+              })
+            }
+          </div>
           <button className="create-item-button" type="submit">Create Item</button>
 
         </div>
@@ -188,13 +195,7 @@ const CreateItemForm = ({ user }) => {
       <button className="create-item-button reset">
         <a href="/item/create">Reset</a>
       </button>
-      <ul className="add-item-errors">
-          {!!errors &&
-              errors.map((err, idx) => {
-                return <li key={`err-${idx}`}>{err}</li>
-              })
-            }
-      </ul>
+
     </div>
   );
 };
