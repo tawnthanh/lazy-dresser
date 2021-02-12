@@ -147,7 +147,7 @@ export const randomOutfit = (inventory, ...cb) => {
     cb[5](item);
 
     if (outfitInclude[randomAdd] === "dress") {
-      cb[3](dress(randomNum(dress)));
+      cb[3](dress[randomNum(dress)]);
 
       outfitItems = ["sweater", "outerwear", "none"];
       let randomPiece = randomNum(outfitItems)

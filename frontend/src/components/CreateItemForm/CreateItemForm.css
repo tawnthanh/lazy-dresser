@@ -22,6 +22,11 @@
   margin: 0px 10px 20px 50px;
   border: 2px solid #1a1d4e;
 }
+.image-upload img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
 
 .top-right{
   grid-area: topRight;
@@ -175,9 +180,7 @@
   margin: 6px 0;
 }
 
-.image-upload img{
-  height: 100%;
-}
+
 
 .pic-instructions{
   display: flex;
