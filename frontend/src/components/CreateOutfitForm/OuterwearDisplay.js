@@ -10,7 +10,7 @@ const OuterwearDisplay = ({ inventory, setOuterwearPic }) => {
 
   return (
     <div className="list">
-        {!!inventory && inventory.map(item => {
+        {inventory.map(item => {
           if (item.itemTypeId === 1) {
             return(
               <div key={item.title} className="item-container">

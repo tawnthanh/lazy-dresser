@@ -35,7 +35,7 @@ export const getAllOutfits = (userId) => async (dispatch) => {
 };
 
 export const deleteOutfit = (outfit) => async (dispatch) => {
-  const res = await fetch(`/api/outfits/${outfit.id}/delete`, {
+  await fetch(`/api/outfits/${outfit.id}/delete`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(outfit)

@@ -4,12 +4,16 @@
 
 .create-outfit-inventory{
   margin-top: 13px;
-  border-bottom: 1px solid black;
 }
 
+.create-outfit-inventory div .list{
+  background-color: #e0e0e0;
+}
 .outfit-divider{
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid #1a1d4e;
+  border-top: 2px solid #1a1d4e;
   font-size: 24px;
+  margin-top: 5px;
 }
 
 .outfit-chosen{
@@ -19,6 +23,7 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 15px;
+  box-sizing: border-box;
 }
 
 .chosen-sweater,
