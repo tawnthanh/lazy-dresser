@@ -100,3 +100,9 @@
 .outfit-errors::before{
   content: "* "
 }
+
+.header img{
+  height: 24px;
+  box-sizing: border-box;
+  padding: 13px 0 0 10px;
+}

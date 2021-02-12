@@ -20,7 +20,7 @@ body {
   align-items: center;
   display: flex;
   justify-content: center;
-  background-color: rgb(224, 224, 224);
+  background-color: #e0e0e0;
 }
 #root {
   position: relative;
@@ -118,4 +118,8 @@ textarea{
 
 ::-webkit-scrollbar-thumb {
   background: #1a1d4e;
+}
+
+::-webkit-scrollbar-track{
+  background: white;
 }

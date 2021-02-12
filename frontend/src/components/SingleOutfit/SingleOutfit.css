@@ -5,7 +5,10 @@
   padding: 10px 20px;
   border-radius: 4px;
   position: relative;
+  background-color: #e0e0e0;
+  color: #1a1d4e;
 }
+
 
 .outfit-list h3{
   margin: 0 0 5px 0;
@@ -14,14 +17,21 @@
 .clarification{
   position: absolute;
   background-color: #1a1d4e;
+  color: white;
   width: 120px;
   top: 25px;
   right: 6px;
-  color: white;
   box-sizing: border-box;
   padding: 5px;
   z-index: 250;
   border-radius: 4px;
+  /* border: 1px solid #1a1d4e; */
+}
+
+.clarification button{
+  box-sizing: border-box;
+  margin: 0 5px;
+  color: #1a1d4e;
 }
 
 .outfit-description{

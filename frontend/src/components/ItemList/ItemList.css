@@ -6,6 +6,11 @@
   display: flex;
   overflow-x: auto;
   width: 100%;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 0 5px;
+  border: 1px solid #1a1d4e;
+  border-radius: 4px;
 }
 
 .item{
@@ -15,10 +20,11 @@
   box-sizing: border-box;
   margin-right: 15px;
   object-fit: contain;
+  background-color: white;
 }
 
 .item-container {
-  margin-bottom: 5px;
+  margin: 5px 0;
   height: 150px;
 }
 .inv-item-details{
@@ -38,6 +44,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: white;
+  color: #1a1d4e;
 }
 
 
@@ -51,4 +59,25 @@
   margin-top: 5px;
   /* position: absolute; */
   right: 0;
+}
+
+.outerwear-list h3{
+  margin: 19px 0 2px 0;
+}
+
+.sweater-list h3,
+.top-list h3,
+.dress-list h3,
+.bottom-list h3,
+.shoe-list h3{
+  margin: 15px 0 2px 0;
+}
+
+.sweater-list .list,
+.top-list .list,
+.dress-list .list,
+.bottom-list .list,
+.shoe-list .list,
+.outerwear-list .list{
+  background-color: #e0e0e0;
 }
