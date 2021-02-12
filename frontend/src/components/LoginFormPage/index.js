@@ -25,7 +25,7 @@ function LoginFormPage() {
   };
 
   const logDemo = () => {
-    dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
+    dispatch(sessionActions.login({ credential: 'Lazy-Dresser', password: 'password' }))
       .then(res => history.push("/"))
       .catch(
         (res) => {
@@ -34,7 +34,7 @@ function LoginFormPage() {
       }
 
   let title = "LAzY\nDrEsSeR";
-  
+
   if (sessionUser) return <Redirect to="/" />;
   return (
     <div className="content signup-login">
