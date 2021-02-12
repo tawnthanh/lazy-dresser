@@ -12,7 +12,6 @@ const router = express.Router();
 
 const validateItemUpload = [
   check('title')
-    .exists({ checkFalsy: true })
     .isLength({ min: 5 })
     .withMessage('Title must be at least 5 characters.'),
   check('primaryColor')

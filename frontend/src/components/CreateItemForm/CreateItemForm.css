@@ -14,6 +14,18 @@
   margin-top: 5px;
 }
 
+.new-item{
+  position: absolute;
+  background-color: #1a1d4e;
+  color: white;
+  width: 120px;
+  bottom: 34px;
+  right: 140px;
+  box-sizing: border-box;
+  padding: 5px;
+  z-index: 250;
+  border-radius: 4px;
+}
 .image-upload{
   grid-area: image;
   width: 175px;

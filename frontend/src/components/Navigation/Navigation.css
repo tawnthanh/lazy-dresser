@@ -6,14 +6,21 @@
   position: absolute;
   width: 90px;
   color: #1a1d4e;
-  margin-left: 8px;
+  margin: 10px 0 0 4px;
   z-index: 300;
   text-align: center;
   font-family: Lora;
   font-size: 22px;
   background-color: white;
+  cursor: pointer;
 }
 
+.side-title i{
+  color: #1a1d4e;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
 .sidebar{
   position: static;
   display: flex;
@@ -51,7 +58,7 @@
 }
 .create-item{
   position: relative;
-  right: 30px;
+  right: 32px;
   bottom: 28px;
 }
 
@@ -73,6 +80,7 @@
 
 .view-items {
   margin-bottom: -30px;
+  margin-top: 50px;
 }
 
 .view-items:hover,
@@ -81,4 +89,13 @@
 .create-outfit:hover,
 .profile:hover{
   margin-left: 5px;
+}
+
+.static-logo{
+  font-size: 24px;
+  text-align: center;
+  box-sizing: border-box;
+  margin-left: 5px;
+  margin-bottom: -50px;
+  color: #1a1d4e;
 }

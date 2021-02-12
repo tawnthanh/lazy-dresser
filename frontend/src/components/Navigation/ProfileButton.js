@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 // import { useDispatch } from 'react-redux';
 // import * as sessionActions from '../../store/session';
 import hanger from "../../imgs/hanger-64.png"
+// import closeArrow from "../../imgs/close-arrow.png";
+// import openArrow from "../../imgs/open-arrow.png";
 
 function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(true);
@@ -26,8 +28,9 @@ function ProfileButton({ user }) {
 
   return (
     <div className="full-sidebar">
-      <div onClick={openMenu}>
-        <div className="side-title">LaZy DResSeR</div>
+      <div onClick={openMenu} className="side-title">
+          {/* {showMenu ? <img src={openArrow} alt="open" /> : <img src={closeArrow} alt="close" />} */}
+          <i className="fas fa-bars fa-2x"></i>
       </div>
       {showMenu && (
         <>
@@ -49,12 +52,11 @@ function ProfileButton({ user }) {
                 <i className="add-outfit fas fa-tshirt fa-3x"></i>
                 <i className="add-item-plus fas fa-plus fa-2x"></i>
             </NavLink>
-            </div>
-            <div className="profile">
-            {/* <ProfileButton user={sessionUser} /> */}
-
+          </div>
+          <div className="profile">
             <NavLink to="/"><i className="fas fa-user-circle fa-3x" /></NavLink>
-            </div>
+          </div>
+          <div className="static-logo">LaZy DResSeR</div>
         </div>
       </>
       )}
