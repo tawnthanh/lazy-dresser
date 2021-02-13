@@ -25,7 +25,7 @@
   position: static;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   height: 97vh;
   width: 80px;
@@ -41,54 +41,18 @@
   color: black;
 }
 
-.fa-plus {
-  color: #1a1d4e;
-
-}
-.create-outfit {
-  position: relative;
-  right: 30px;
-  bottom: 28px;
-
-}
-
-.fa-tshirt.add-outfit{
-  box-sizing: border-box;
-  padding: 5px 0px;
-}
-.create-item{
-  position: relative;
-  right: 32px;
-  bottom: 28px;
-}
-
-.add-outfit, .add-item-plus,
-.add-clothes, .add-clothes-plus{
-  position: absolute;
-}
-
-
-.add-item-plus{
-  top: 28px;
-  left: 40px;
-}
-
-.add-clothes-plus{
-  top: 32px;
-  left: 40px;
-}
-
 .view-items {
-  margin-bottom: -30px;
-  margin-top: 50px;
+  margin-top: 80px;
 }
 
-.view-items:hover,
-.create-item:hover,
-.view-outfits:hover,
-.create-outfit:hover,
-.profile:hover{
-  margin-left: 5px;
+
+.create-outfit{
+  padding-top: 10px;
+  margin-left: 9px;
+}
+
+.create-item{
+  margin-left: 9px;
 }
 
 .static-logo{
@@ -96,7 +60,7 @@
   text-align: center;
   box-sizing: border-box;
   margin-left: 5px;
-  margin-bottom: -30px;
+  /* margin-bottom: -30px; */
   color: #1a1d4e;
 }
 
@@ -104,11 +68,21 @@
   color: #1a1d4e;
   text-align: center;
   font-size: 12px;
-  position: absolute;
-  bottom: 0;
-  left: 0px;
   width: 104px;
+  margin-left: 5px;
 }
+
+.view-items:hover,
+.view-outfits:hover,
+.profile:hover{
+  margin-left: 5px;
+}
+
+.create-item:hover,
+.create-outfit:hover{
+  margin-left: 14px;
+}
+
 
 .credits:hover,
 .credits a:hover{
