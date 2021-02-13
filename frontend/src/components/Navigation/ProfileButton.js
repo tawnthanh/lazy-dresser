@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-// import { useDispatch } from 'react-redux';
-// import * as sessionActions from '../../store/session';
 import hanger from "../../imgs/hanger-64.png"
-// import closeArrow from "../../imgs/close-arrow.png";
-// import openArrow from "../../imgs/open-arrow.png";
+
 
 function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(true);
