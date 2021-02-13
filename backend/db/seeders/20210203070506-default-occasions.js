@@ -3,9 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Occasions', [
-      { type: "Daytime" },
-      { type: "Evening" },
-      { type: "Casual" },
+      { type: "Everyday" },
       { type: "Dressy" },
       { type: "Athletic" },
       { type: "Business" },
