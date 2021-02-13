@@ -6,19 +6,26 @@
   position: absolute;
   width: 90px;
   color: #1a1d4e;
-  margin-left: 8px;
+  margin: 10px 0 0 4px;
   z-index: 300;
   text-align: center;
   font-family: Lora;
   font-size: 22px;
   background-color: white;
+  cursor: pointer;
 }
 
+.side-title i{
+  color: #1a1d4e;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
 .sidebar{
   position: static;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   height: 97vh;
   width: 80px;
@@ -34,51 +41,51 @@
   color: black;
 }
 
-.fa-plus {
-  color: #1a1d4e;
-
-}
-.create-outfit {
-  position: relative;
-  right: 30px;
-  bottom: 28px;
-
-}
-
-.fa-tshirt.add-outfit{
-  box-sizing: border-box;
-  padding: 5px 0px;
-}
-.create-item{
-  position: relative;
-  right: 30px;
-  bottom: 28px;
-}
-
-.add-outfit, .add-item-plus,
-.add-clothes, .add-clothes-plus{
-  position: absolute;
-}
-
-
-.add-item-plus{
-  top: 28px;
-  left: 40px;
-}
-
-.add-clothes-plus{
-  top: 32px;
-  left: 40px;
-}
-
 .view-items {
-  margin-bottom: -30px;
+  margin-top: 80px;
+}
+
+
+.create-outfit{
+  padding-top: 10px;
+  margin-left: 9px;
+}
+
+.create-item{
+  margin-left: 9px;
+}
+
+.static-logo{
+  font-size: 24px;
+  text-align: center;
+  box-sizing: border-box;
+  margin-left: 5px;
+  /* margin-bottom: -30px; */
+  color: #1a1d4e;
+}
+
+.credits{
+  color: #1a1d4e;
+  text-align: center;
+  font-size: 12px;
+  width: 104px;
+  margin-left: 5px;
 }
 
 .view-items:hover,
-.create-item:hover,
 .view-outfits:hover,
-.create-outfit:hover,
 .profile:hover{
   margin-left: 5px;
+}
+
+.create-item:hover,
+.create-outfit:hover{
+  margin-left: 14px;
+}
+
+
+.credits:hover,
+.credits a:hover{
+  color: white;
+  background-color: #1a1d4e;
 }

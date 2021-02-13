@@ -21,13 +21,18 @@ body {
   display: flex;
   justify-content: center;
   background-color: #e0e0e0;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-top: 8px;
+  margin-bottom: 8px;
+
 }
 #root {
   position: relative;
   display: flex;
   flex-direction: row;
-  width: 800px;
   height: 97vh;
+  width: 800px;
   background-color: white;
   border: 1px solid black;
 }
@@ -47,14 +52,16 @@ body {
 }
 
 .white-block{
-  height: 56px;
+  height: 58px;
   width: 800px;
   background-color: white;
   position: fixed;
   z-index: 200;
-
+  font-size: 36px;
   display: flex;
   justify-content: center;
+  padding-top: 5px;
+  color: #1a1d4e;
 }
 
 .login-signup-title{

@@ -20,6 +20,7 @@ const CreateItemForm = ({ user }) => {
   const [errors, setErrors] = useState([]);
   const [mainColorState, setMainColorState] = useState("")
   const [secondColorState, setSecondColorState] = useState("")
+  const [newItem, setNewItem] = useState(false);
 
   const { data } = usePalette(baseImage)
 
@@ -50,8 +51,27 @@ const CreateItemForm = ({ user }) => {
     })
   };
 
+  // const newItemButton = () => {
+  //   if (!newItem) setNewItem(true);
+  //   else setNewItem(false);
+  // };
+  const reloadForm = () => {
+    setImage("");
+    setBaseImage("");
+    setTitle("");
+    setItemType(null);
+    setFit(null);
+    setOccasion(null);
+    setDescription("");
+    setMainColorState("");
+    setSecondColorState("");
+    setNewItem(false);
+    dispatch(grabFixedFields());
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrors([]);
     let item = {
       title,
       description,
@@ -64,7 +84,7 @@ const CreateItemForm = ({ user }) => {
       "occasionId": occasion,
     }
     return dispatch(createItem(item))
-            .then((res) => history.push("/items"))
+            .then((res) => setNewItem(true))
             .catch(res => {
               if (res.data && res.data.errors) setErrors(res.data.errors);
             });
@@ -132,7 +152,7 @@ const CreateItemForm = ({ user }) => {
               type="text"
               value={title}
               placeholder="Title"
-              required={true}
+              // required={true}
               onChange={(e)=>setTitle(e.target.value)}
             />
           </label>
@@ -188,6 +208,13 @@ const CreateItemForm = ({ user }) => {
               })
             }
           </div>
+            {newItem &&
+              <div className="new-item">
+                Successful! Add new item?
+                <button onClick={reloadForm}>Yes</button>
+                <button onClick={()=>history.push("/items")}>No</button>
+              </div>
+            }
           <button className="create-item-button" type="submit">Create Item</button>
 
         </div>

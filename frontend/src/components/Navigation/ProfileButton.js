@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-// import { useDispatch } from 'react-redux';
-// import * as sessionActions from '../../store/session';
 import hanger from "../../imgs/hanger-64.png"
+import newItem from "../../imgs/add-item.png";
+import newOutfit from "../../imgs/add-outfit.png";
 
 function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(true);
@@ -26,8 +26,8 @@ function ProfileButton({ user }) {
 
   return (
     <div className="full-sidebar">
-      <div onClick={openMenu}>
-        <div className="side-title">LaZy DResSeR</div>
+      <div onClick={openMenu} className="side-title">
+          <i className="fas fa-bars fa-2x"></i>
       </div>
       {showMenu && (
         <>
@@ -37,8 +37,7 @@ function ProfileButton({ user }) {
           </div>
           <div className="create-item">
             <NavLink to="/item/create">
-                <img className="add-clothes" src={hanger} alt={hanger}/>
-                <i className="add-clothes-plus fas fa-plus fa-2x"></i>
+                <img className="add-clothes" src={newItem} alt={newItem}/>
             </NavLink>
           </div>
           <div className="view-outfits">
@@ -46,15 +45,16 @@ function ProfileButton({ user }) {
           </div>
           <div className="create-outfit">
             <NavLink to="/outfit/create">
-                <i className="add-outfit fas fa-tshirt fa-3x"></i>
-                <i className="add-item-plus fas fa-plus fa-2x"></i>
+              <img className="add-outfit" src={newOutfit} alt={newOutfit}/>
             </NavLink>
-            </div>
-            <div className="profile">
-            {/* <ProfileButton user={sessionUser} /> */}
-
+          </div>
+          <div className="profile">
             <NavLink to="/"><i className="fas fa-user-circle fa-3x" /></NavLink>
-            </div>
+          </div>
+          <div className="static-logo">LaZy DResSeR</div>
+          <div className="credits">
+            <NavLink to="/credit">by Thanh Nguyen</NavLink>
+          </div>
         </div>
       </>
       )}

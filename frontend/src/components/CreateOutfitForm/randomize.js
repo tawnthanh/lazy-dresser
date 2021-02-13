@@ -1,4 +1,4 @@
-const complimentaryColors = require("complementary-colors");
+// const complimentaryColors = require("complementary-colors");
 
 function randomNum(array) {
   return Math.floor(Math.random() * Math.floor(array.length));

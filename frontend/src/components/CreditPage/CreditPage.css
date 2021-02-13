@@ -1,0 +1,14 @@
+.social a img {
+  width: 100px;
+  height: auto;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+}
+
+.social a{
+  box-sizing: border-box;
+  margin: 5px;
+}

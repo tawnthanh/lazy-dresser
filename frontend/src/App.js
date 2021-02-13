@@ -11,6 +11,7 @@ import ItemList from "./components/ItemList";
 import EditItem from "./components/EditItem";
 import CreateOutfitForm from "./components/CreateOutfitForm";
 import OutfitList from "./components/OutfitList";
+import CreditPage from "./components/CreditPage";
 // import Randomize from "./components/RandomizeTester";
 
 function App() {
@@ -53,6 +54,9 @@ function App() {
           </Route>
           <Route path="/outfits" exact={true}>
             <OutfitList user={user} />
+          </Route>
+          <Route path="/credit" exact={true}>
+            <CreditPage />
           </Route>
           {/* <Route path="/randomize" exact={true}>
             <RandomizeTester />
