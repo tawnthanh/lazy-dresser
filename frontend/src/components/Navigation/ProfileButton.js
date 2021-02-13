@@ -57,6 +57,9 @@ function ProfileButton({ user }) {
             <NavLink to="/"><i className="fas fa-user-circle fa-3x" /></NavLink>
           </div>
           <div className="static-logo">LaZy DResSeR</div>
+          <div className="credits">
+            <NavLink to="/credit">@ Thanh Nguyen</NavLink>
+          </div>
         </div>
       </>
       )}

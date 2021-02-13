@@ -96,6 +96,22 @@
   text-align: center;
   box-sizing: border-box;
   margin-left: 5px;
-  margin-bottom: -50px;
+  margin-bottom: -30px;
   color: #1a1d4e;
+}
+
+.credits{
+  color: #1a1d4e;
+  text-align: center;
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+  left: .5px;
+  width: 104px;
+}
+
+.credits:hover,
+.credits a:hover{
+  color: white;
+  background-color: #1a1d4e;
 }
