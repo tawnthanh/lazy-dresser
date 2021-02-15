@@ -19,7 +19,7 @@
 - React
 - Express
 - [React Palette](https://www.npmjs.com/package/react-palette)
-- AWS
+- AWS S3
 
 
 ## Features

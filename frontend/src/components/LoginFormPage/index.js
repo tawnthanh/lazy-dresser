@@ -26,11 +26,7 @@ function LoginFormPage() {
 
   const logDemo = () => {
     dispatch(sessionActions.login({ credential: 'Lazy-Dresser', password: 'password' }))
-      .then(res => history.push("/"))
-      .catch(
-        (res) => {
-          if (res.data && res.data.errors) setErrors(["Sorry, invalid credentials.\nTry again"]);
-        })
+      .then(res => history.push("/"));
       }
 
   let title = "LAzY\nDrEsSeR";
