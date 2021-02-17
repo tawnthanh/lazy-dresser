@@ -232,3 +232,18 @@
 .random-button{
   width: auto;
 }
+
+.add-more{
+  color: white;
+  background-color: #1a1d4e;
+  box-sizing: border-box;
+  margin: 5px 50px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 2px outset #14163b;
+}
+
+.add-more:active {
+  transform: scale(0.99);
+}

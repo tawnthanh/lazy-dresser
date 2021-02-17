@@ -91,6 +91,11 @@ const CreateItemForm = ({ user }) => {
 
   }
 
+  const addMore = (e) => {
+    handleSubmit(e);
+    if (!errors.length) reloadForm();
+  };
+
   return (
     <div className="content create-item-container">
       <form className="add-item" onSubmit={handleSubmit}>
@@ -208,14 +213,15 @@ const CreateItemForm = ({ user }) => {
               })
             }
           </div>
-            {newItem &&
+            {/* {newItem &&
               <div className="new-item">
                 Successful! Add new item?
                 <button onClick={reloadForm}>Yes</button>
                 <button onClick={()=>history.push("/items")}>No</button>
               </div>
-            }
-          <button className="create-item-button" type="submit">Create Item</button>
+            } */}
+          <div className="add-more" onClick={addMore}>Add More +</div>
+          <button className="create-item-button" type="submit">Done</button>
 
         </div>
       </form>
