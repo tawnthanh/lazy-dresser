@@ -13,9 +13,9 @@ const CreateItemForm = ({ user }) => {
   const [image, setImage] = useState("");
   const [baseImage, setBaseImage] = useState("")
   const [title, setTitle] = useState("");
-  const [itemType, setItemType] = useState(null);
-  const [fit, setFit] = useState(null);
-  const [occasion, setOccasion] = useState(null);
+  const [itemType, setItemType] = useState(0);
+  const [fit, setFit] = useState(0);
+  const [occasion, setOccasion] = useState(0);
   const [description, setDescription] = useState("");
   const [errors, setErrors] = useState([]);
   const [mainColorState, setMainColorState] = useState("")
@@ -28,6 +28,12 @@ const CreateItemForm = ({ user }) => {
     dispatch(grabFixedFields());
   }, [dispatch])
 
+  useEffect(() => {
+    if (newItem) {
+      alert("Item successfully added!");
+      reloadForm();
+    }
+  }, [newItem]);
 
   const updateFile = async (e) => {
     const file = e.target.files[0];
@@ -51,22 +57,20 @@ const CreateItemForm = ({ user }) => {
     })
   };
 
-  // const newItemButton = () => {
-  //   if (!newItem) setNewItem(true);
-  //   else setNewItem(false);
-  // };
+
   const reloadForm = () => {
+    dispatch(grabFixedFields());
     setImage("");
     setBaseImage("");
     setTitle("");
-    setItemType(null);
-    setFit(null);
-    setOccasion(null);
+    setItemType(0);
+    setFit(0);
+    setOccasion(0);
     setDescription("");
     setMainColorState("");
     setSecondColorState("");
     setNewItem(false);
-    dispatch(grabFixedFields());
+    setErrors([])
   };
 
   const handleSubmit = (e) => {
@@ -91,14 +95,34 @@ const CreateItemForm = ({ user }) => {
 
   }
 
-  const addMore = (e) => {
-    handleSubmit(e);
-    if (!errors.length) reloadForm();
+  const doneUpload = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    let item = {
+      title,
+      description,
+      image,
+      "primaryColor": mainColorState,
+      "secondaryColor": secondColorState,
+      "itemTypeId": itemType,
+      "fitId": fit,
+      "userId": user.id,
+      "occasionId": occasion,
+    }
+    return dispatch(createItem(item))
+      .then((res) => {
+        alert("Item successfully added!");
+        history.push("/items");
+      })
+      .catch(res => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      });
   };
+
 
   return (
     <div className="content create-item-container">
-      <form className="add-item" onSubmit={handleSubmit}>
+      <form className="add-item" onSubmit={doneUpload}>
         <div className="image-upload">
           {baseImage ?
             <img src={baseImage} alt="something" />
@@ -164,6 +188,7 @@ const CreateItemForm = ({ user }) => {
           <label className="add-item-itemType">
             <select
               name="item-type"
+              value={itemType}
               onChange={(e) => setItemType(e.target.value)}>
               <option value={0}>Item Type</option>
               {!!defaults.itemTypes &&
@@ -177,6 +202,7 @@ const CreateItemForm = ({ user }) => {
             <select
               name="fit-type"
               onChange={(e) => setFit(e.target.value)}
+              value={fit}
             >
               <option value={0}>Fit</option>
               {!!defaults.fits &&
@@ -190,6 +216,7 @@ const CreateItemForm = ({ user }) => {
             <select
               name="occasion-type"
               onChange={(e) => setOccasion(e.target.value)}
+              value={occasion}
             >
               <option value={0}>Occasion</option>
               {!!defaults.occasions &&
@@ -213,21 +240,12 @@ const CreateItemForm = ({ user }) => {
               })
             }
           </div>
-            {/* {newItem &&
-              <div className="new-item">
-                Successful! Add new item?
-                <button onClick={reloadForm}>Yes</button>
-                <button onClick={()=>history.push("/items")}>No</button>
-              </div>
-            } */}
-          <div className="add-more" onClick={addMore}>Add More +</div>
+          <div className="add-more" onClick={handleSubmit}>Add More +</div>
           <button className="create-item-button" type="submit">Done</button>
 
         </div>
       </form>
-      <button className="create-item-button reset">
-        <a href="/item/create">Reset</a>
-      </button>
+      <button className="create-item-button reset" onClick={reloadForm}>Reset</button>
 
     </div>
   );
