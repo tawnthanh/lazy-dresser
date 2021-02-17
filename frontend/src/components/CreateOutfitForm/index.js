@@ -58,11 +58,13 @@ const CreateOutfitForm = ({ user }) => {
       description
     }
     return dispatch(createOutfit(outfit))
-      .then((res) => history.push("/outfits"))
+      .then((res) => {
+        alert("Outfit successfully added!");
+        history.push("/outfits");
+      })
       .catch(res => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
-    // if(!errors.length) history.push("/outfits")
   }
 
   return (

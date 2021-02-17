@@ -31,9 +31,6 @@ const ItemList = ({ user }) => {
     }
   }, [items]);
 
-  useEffect(() => {
-    console.log(occasion);
-  }, [occasion])
 
   const deleteItem = (item) => {
     dispatch(deleteSingleItem(item));
@@ -50,7 +47,6 @@ const ItemList = ({ user }) => {
       description
     };
 
-    console.log(item)
     return dispatch(updateItem(item))
             .then(res => history.push("/items"))
   }
