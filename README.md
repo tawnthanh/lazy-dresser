@@ -20,7 +20,7 @@
 <a href="https://redux.js.org/"><img alt="Redux" src="https://img.shields.io/badge/-Redux-764ABC?style=flat-square&logo=Redux&logoColor=white" /></a>
 <a href="https://reactrouter.com/"><img alt="React Router" src="https://img.shields.io/badge/-React%20Router-CA4245?style=flat-square&logo=React-Router&logoColor=white" /></a>
 <a href="https://aws.amazon.com/"><img alt="Amazon AWS" src="https://img.shields.io/badge/-Amazon%20AWS-232F3E?style=flat-square&logo=Amazon%20AWS&logoColor=white" /></a>
-- Express
+<a href="https://expressjs.com/"><img alt="Express" src="https://img.shields.io/badge/-Express-430098?style=flat-square&logo=Express&logoColor=white" /></a>
 - [React Palette](https://www.npmjs.com/package/react-palette)
 
 
