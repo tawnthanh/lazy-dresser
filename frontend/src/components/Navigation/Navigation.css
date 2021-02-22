@@ -84,8 +84,18 @@
 }
 
 
-.credits:hover,
 .credits a:hover{
   color: white;
   background-color: #1a1d4e;
+}
+
+.credits {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.credits a{
+  padding: 2px;
+  box-sizing: border-box;
 }

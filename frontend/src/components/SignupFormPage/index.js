@@ -36,7 +36,11 @@ function SignupFormPage() {
        {title}
       </h1>
       <div className="closet-container">
-        <img src={closet} alt="polka-dots"/>
+        <img src={closet} alt="polka-dots" />
+        <div className="credits-start">
+              <a href="https://github.com/tawnthanh"><i className="fab fa-github fa-2x"></i></a>
+              <a href="https://www.linkedin.com/in/thanh-nguyen-15a50437/"><i className="fab fa-linkedin-in fa-2x"></i></a>
+        </div>
       </div>
         <form className="signup-form" onSubmit={handleSubmit}>
 

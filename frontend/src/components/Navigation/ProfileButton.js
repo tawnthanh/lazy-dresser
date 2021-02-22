@@ -53,7 +53,9 @@ function ProfileButton({ user }) {
           </div>
           <div className="static-logo">LaZy DResSeR</div>
           <div className="credits">
-            <NavLink to="/credit">by Thanh Nguyen</NavLink>
+              {/* <NavLink to="/credit">by Thanh Nguyen</NavLink> */}
+              <a href="https://github.com/tawnthanh"><i className="fab fa-github fa-2x"></i></a>
+              <a href="https://www.linkedin.com/in/thanh-nguyen-15a50437/"><i className="fab fa-linkedin-in fa-2x"></i></a>
           </div>
         </div>
       </>

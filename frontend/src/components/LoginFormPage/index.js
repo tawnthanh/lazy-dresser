@@ -35,7 +35,11 @@ function LoginFormPage() {
   return (
     <div className="content signup-login">
       <div className="login-container">
-        <img src={openCloset} alt="open-closet"/>
+        <img src={openCloset} alt="open-closet" />
+        <div className="credits-start">
+              <a href="https://github.com/tawnthanh"><i className="fab fa-github fa-2x"></i></a>
+              <a href="https://www.linkedin.com/in/thanh-nguyen-15a50437/"><i className="fab fa-linkedin-in fa-2x"></i></a>
+        </div>
       </div>
       <h1 className="main-title">
        {title}
