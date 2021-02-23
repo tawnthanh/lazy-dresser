@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import "./CreateItemForm.css";
 import { usePalette } from "react-palette";
 import {grabFixedFields, createItem} from "../../store/items";
+import SuccessfulModal from "../SuccessfulModal";
 
 const CreateItemForm = ({ user }) => {
   const dispatch = useDispatch();
@@ -26,12 +27,14 @@ const CreateItemForm = ({ user }) => {
 
   useEffect(() => {
     dispatch(grabFixedFields());
-  }, [dispatch])
+  }, [])
 
   useEffect(() => {
     if (newItem) {
-      alert("Item successfully added!");
-      reloadForm();
+      setTimeout(() => {
+        setNewItem(false)
+        reloadForm();
+      }, 800)
     }
   }, [newItem]);
 
@@ -110,9 +113,10 @@ const CreateItemForm = ({ user }) => {
       "occasionId": occasion,
     }
     return dispatch(createItem(item))
-      .then((res) => {
-        alert("Item successfully added!");
-        history.push("/items");
+    .then((res) => {
+        setTimeout(() => {
+          history.push("/items");
+        }, 800)
       })
       .catch(res => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
@@ -122,7 +126,13 @@ const CreateItemForm = ({ user }) => {
 
   return (
     <div className="content create-item-container">
-      <form className="add-item" onSubmit={doneUpload}>
+      {newItem &&
+        <SuccessfulModal newItem={newItem}/>
+      }
+      <form className="add-item" onSubmit={(e) => {
+        setNewItem(true);
+        doneUpload(e);
+      }}>
         <div className="image-upload">
           {baseImage ?
             <img src={baseImage} alt="something" />
@@ -152,7 +162,7 @@ const CreateItemForm = ({ user }) => {
               onChange={(e) => setMainColorState(e.target.value)}
               style={{ backgroundColor: mainColorState, width: "100%" }}
             >
-              <option value={0}>Main Color</option>
+              <option value={0}>Select Main Color</option>
               {data && Object.values(data).map((pulledColor, idx) => {
                 return <option value={pulledColor} key={pulledColor + "-" + idx} style={{ backgroundColor: pulledColor, width: "100%" }}>
                   {pulledColor}
@@ -166,7 +176,7 @@ const CreateItemForm = ({ user }) => {
               onChange={(e) => setSecondColorState(e.target.value)}
               style={{ backgroundColor: secondColorState, width: "100%" }}
             >
-              <option value={0}>Secondary Color</option>
+              <option value={0}>Select Secondary Color</option>
               {data && Object.values(data).map((pulledColor, idx) => {
                 return <option value={pulledColor} key={pulledColor + "-" + idx} style={{ backgroundColor: pulledColor, width: "100%" }}>
                   {pulledColor}
@@ -190,7 +200,7 @@ const CreateItemForm = ({ user }) => {
               name="item-type"
               value={itemType}
               onChange={(e) => setItemType(e.target.value)}>
-              <option value={0}>Item Type</option>
+              <option value={0}>Select Item Type</option>
               {!!defaults.itemTypes &&
                 defaults.itemTypes.map((type) => {
                   return <option key={`${type[0]}-${type[1]}`} value={type[0]}>{type[1]}</option>
@@ -204,7 +214,7 @@ const CreateItemForm = ({ user }) => {
               onChange={(e) => setFit(e.target.value)}
               value={fit}
             >
-              <option value={0}>Fit</option>
+              <option value={0}>Select Fit</option>
               {!!defaults.fits &&
                 defaults.fits.map((type) => {
                   return <option key={`${type[0]}-${type[1]}`} value={type[0]}>{type[1]}</option>
@@ -218,7 +228,7 @@ const CreateItemForm = ({ user }) => {
               onChange={(e) => setOccasion(e.target.value)}
               value={occasion}
             >
-              <option value={0}>Occasion</option>
+              <option value={0}>Select Occasion</option>
               {!!defaults.occasions &&
                 defaults.occasions.map((type) => {
                   return <option key={`${type[0]}-${type[1]}`} value={type[0]}>{type[1]}</option>
