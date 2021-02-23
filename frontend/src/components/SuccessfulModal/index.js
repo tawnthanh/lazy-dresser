@@ -8,7 +8,7 @@ function SuccessfulModal({newItem}) {
     <>
       {newItem && (
         <Modal>
-          <div className="success">Added to inventory!</div>
+          <div className="success">Added Successfully!</div>
         </Modal>
       )}
     </>

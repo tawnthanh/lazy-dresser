@@ -13,6 +13,7 @@ import "./CreateOutfitForm.css";
 import { randomOutfit } from "./randomize";
 import closeArrow from "../../imgs/close-arrow.png";
 import openArrow from "../../imgs/open-arrow.png";
+import SuccessfulModal from "../SuccessfulModal";
 
 const CreateOutfitForm = ({ user }) => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const CreateOutfitForm = ({ user }) => {
   const [bottomPic, setBottomPic] = useState({});
   const [shoesPic, setShoesPic] = useState({});
   const [errors, setErrors] = useState([]);
+  const [newOutfit, setNewOutfit] = useState(false);
 
   useEffect(() => {
     dispatch(getAllItems(user.id));
@@ -59,8 +61,8 @@ const CreateOutfitForm = ({ user }) => {
     }
     return dispatch(createOutfit(outfit))
       .then((res) => {
-        alert("Outfit successfully added!");
-        history.push("/outfits");
+        setNewOutfit(true);
+        setTimeout(() => history.push("/outfits"), 800)
       })
       .catch(res => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
@@ -71,6 +73,10 @@ const CreateOutfitForm = ({ user }) => {
     <>
       { isLoaded &&
         <div className="content create-outfit-form">
+        {newOutfit &&
+          <SuccessfulModal newItem={newOutfit} />
+        }
+
           <div className="create-outfit-inventory">
             <div>
               <h3 className="header" onClick={() => setOuterwear(!outerwear)}>
