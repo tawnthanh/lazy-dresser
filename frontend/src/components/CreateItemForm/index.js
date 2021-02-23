@@ -113,7 +113,8 @@ const CreateItemForm = ({ user }) => {
       "occasionId": occasion,
     }
     return dispatch(createItem(item))
-    .then((res) => {
+      .then((res) => {
+        setNewItem(true);
         setTimeout(() => {
           history.push("/items");
         }, 800)
@@ -129,10 +130,7 @@ const CreateItemForm = ({ user }) => {
       {newItem &&
         <SuccessfulModal newItem={newItem}/>
       }
-      <form className="add-item" onSubmit={(e) => {
-        setNewItem(true);
-        doneUpload(e);
-      }}>
+      <form className="add-item" onSubmit={doneUpload}>
         <div className="image-upload">
           {baseImage ?
             <img src={baseImage} alt="something" />
