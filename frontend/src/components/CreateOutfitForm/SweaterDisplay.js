@@ -23,15 +23,14 @@ const SweaterDisplay = ({ inventory, setSweaterPic }) => {
                   {sweaterDetail &&
                     <div className="inv-item-details">
                       <div title="Click for details">
-                        <b>Title:</b> {item.title}
-                        <br></br>
-                        <b>Color:</b> {`${item.primaryColor}, ${item.secondaryColor}`}
-                        <br></br>
-                        <b>Fit:</b> {item.Fit.type}
-                        <br></br>
-                        <b>Occasion:</b> {item.Occasion.type}
-                        <br></br>
-                        <b>Description:</b> {item.description ? item.description : "none"}
+                        <p><b>Title: </b>{item.title}</p>
+
+                        <p><b>Color: </b>{`${item.primaryColor}, ${item.secondaryColor}`}</p>
+                        <p><b>Fit: </b>{item.Fit.type}</p>
+
+                        <p><b>Occasion: </b>{item.Occasion.type}</p>
+
+                        <p><b>Description: </b>{item.description ? item.description : "none"}</p>
                       </div>
                     </div>
                   }

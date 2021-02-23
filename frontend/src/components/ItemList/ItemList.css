@@ -48,7 +48,11 @@
   color: #1a1d4e;
 }
 
-
+.inv-item-details p{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 .list .item-container, .footer{
   display: flex;
 }
