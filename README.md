@@ -1,7 +1,7 @@
 # LAzYdREsSer
 ## Introduction
 
-["LAzYdREsSer"](http://lazy-dresser.herokuapp.com/) is an application for users to inventory all of their clothes into their account. Ever wake up for work, school, or interview and thought, "What do I have to wear?". This app is supposed to help you create your outfits by pulling your inventory and adding whatever you see fit. If you ever get stuck, the application will also have a randomization button to help you as well.
+["LAzYdREsSer"](https://lazy-dresser.herokuapp.com/) is an application for users to inventory all of their clothes into their account. Ever wake up for work, school, or interview and thought, "What do I have to wear?". This app is supposed to help you create your outfits by pulling your inventory and adding whatever you see fit. If you ever get stuck, the application will also have a randomization button to help you as well.
 
 ## Table of Contents
 
